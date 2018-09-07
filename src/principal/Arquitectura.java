@@ -124,23 +124,8 @@ public class Arquitectura {
                     }
                     break;
                 case 4:
-                    int opcion4 = Integer.parseInt(JOptionPane.showInputDialog(""
-                            + "1. Pasajero \n"
-                            + "2. Conductor \n"
-                            + "3. Administrador \n"
-                            + "4. Regresar"));
-                    switch (opcion4) {
-                        case 1:
-                            pasajero.consultar();
-                            break;
-                        case 2:
-                            conductor.consultar();
-                            break;
-                        case 3:
-                            administrador.consultar();
-                            break;
-                        case 4:
-                    }
+                	correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
+                    contrasena = JOptionPane.showInputDialog("Introducir contrasena");
                     break;
                 case 0:
                     break;
