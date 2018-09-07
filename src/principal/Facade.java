@@ -67,9 +67,5 @@ public class Facade {
 		
 	}
 	
-	public int buscarTipoUsuario() {
-		int i;
-		return i = 0;
-	}
 	
 }
