@@ -30,6 +30,8 @@ public class Arquitectura {
         Usuario conductor = new Conductor();
         Usuario administrador = new AdministradorAdapter();
         int opcion = 0;
+        
+        Facade facade = new Facade();
 
         do {
             
@@ -126,6 +128,60 @@ public class Arquitectura {
                 case 4:
                 	correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
                     contrasena = JOptionPane.showInputDialog("Introducir contrasena");
+                    int tipoUsuario = facade.buscarTipoUsuario();
+                    switch(tipoUsuario) {
+                    case 1:
+                    	//Pasajero
+                    	opcion = Integer.parseInt(JOptionPane.showInputDialog(""
+                                + "1. Crear registro de reserva \n"
+                                + "2. Listar reservas \n"
+                                + "3. Modificar reserva \n"
+                                + "4. Eliminar reserva \n"
+                                + "0. salir \n"));
+                    	switch (opcion) {
+                    	case 1:
+                    		facade.crearRegistroReserva();
+                    		break;
+                    	case 2:
+                    		facade.listarReservasPasajero();
+                    		break;
+                    	case 3:
+                    		facade.modificarReservaPasajero();
+                    		break;
+                    	case 4:
+                    		facade.eliminarReserva();
+                    		break;
+                    	case 0:
+                    		break;
+                    		
+                    	}
+                    	break;
+                    case 2:
+                    	//Conductor
+                    	opcion = Integer.parseInt(JOptionPane.showInputDialog(""
+                                + "1. Crear ruta \n"
+                                + "2. Listar rutas \n"
+                                + "3. Modificar ruta \n"
+                                + "4. Eliminar ruta \n"
+                                + "0. Salir \n"));
+                    	switch (opcion) {
+                    	case 1:
+                    		facade.crearRegistroRuta("");
+                    		break;
+                    	case 2:
+                    		facade.listarRutasConductor();
+                    		break;
+                    	case 3:
+                    		facade.actualizarRuta();
+                    		break;
+                    	case 4:
+                    		facade.eliminarRuta();
+                    		break;
+                    	case 0:
+                    		break;
+                    	}
+                    	break;
+                    }
                     break;
                 case 0:
                     break;
