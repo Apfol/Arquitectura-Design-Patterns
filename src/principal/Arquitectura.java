@@ -184,6 +184,7 @@ public class Arquitectura {
                     }
                     break;
                 case 0:
+                	JOptionPane.showMessageDialog(null, "Usuario no encontrado");
                     break;
             }
         } while (opcion != 0);
