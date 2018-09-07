@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arquitectura;
+package adapter;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class Pasajero extends Usuario {
 
-    public Pasajero(String nombre, String correo, String contraseña) {
-        super(nombre, correo, contraseña);
+    public Pasajero(String nombre, String correo, String contrasena) {
+        super(nombre, correo, contrasena);
     }
 
     public Pasajero() {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arquitectura;
+package adapter;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -16,8 +16,8 @@ public class AdministradorAdapter extends Usuario {
 
     private Administrador administrador = new Administrador();
 
-    public AdministradorAdapter(String nombre, String usuario, String contraseña) {
-        super(nombre, usuario, contraseña);
+    public AdministradorAdapter(String nombre, String usuario, String contrasena) {
+        super(nombre, usuario, contrasena);
     }
     
     public AdministradorAdapter() {

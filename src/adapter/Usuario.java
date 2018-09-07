@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arquitectura;
+package adapter;
 
 import java.util.ArrayList;
 
@@ -15,16 +15,16 @@ public abstract class Usuario {
 
     private String nombre;
     private String correo;
-    private String contraseña;
+    private String contrasena;
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
     public Usuario() {
     }
     
-    public Usuario(String nombre, String usuario, String contraseña) {
+    public Usuario(String nombre, String usuario, String contrasena) {
         this.nombre = nombre;
         this.correo = usuario;
-        this.contraseña = contraseña;
+        this.contrasena= contrasena;
     }
 
     
@@ -56,12 +56,12 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getCorreo() {

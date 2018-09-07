@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arquitectura;
+package adapter;
 
 import javax.swing.JOptionPane;
 
@@ -20,7 +20,7 @@ public class Arquitectura {
 
         String nombre;
         String correo;
-        String contraseña;
+        String contrasena;
         Usuario pasajero = new Pasajero();
         Usuario conductor = new Conductor();
         Usuario administrador = new AdministradorAdapter();
@@ -45,22 +45,22 @@ public class Arquitectura {
                         case 1:
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
                             correo = JOptionPane.showInputDialog("Introducir correo");
-                            contraseña = JOptionPane.showInputDialog("Introducir contraseña");
-                            pasajero = new Pasajero(nombre, correo, contraseña);
+                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+                            pasajero = new Pasajero(nombre, correo, contrasena);
                             pasajero.adicionar(pasajero);
                             break;
                         case 2:
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
                             correo = JOptionPane.showInputDialog("Introducir correo");
-                            contraseña = JOptionPane.showInputDialog("Introducir contraseña");
-                            conductor = new Conductor(nombre, correo, contraseña);
+                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+                            conductor = new Conductor(nombre, correo, contrasena);
                             conductor.adicionar(conductor);
                             break;
                         case 3:
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
                             correo = JOptionPane.showInputDialog("Introducir correo");
-                            contraseña = JOptionPane.showInputDialog("Introducir contraseña");
-                            administrador = new AdministradorAdapter(nombre, correo, contraseña);
+                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+                            administrador = new AdministradorAdapter(nombre, correo, contrasena);
                             administrador.adicionar(administrador);
                             break;
                         case 4:
@@ -76,22 +76,22 @@ public class Arquitectura {
                         case 1:
                             correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contraseña = JOptionPane.showInputDialog("Introducir contraseña");
-                            pasajero = new Pasajero(nombre, correo, contraseña);
+                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+                            pasajero = new Pasajero(nombre, correo, contrasena);
                             pasajero.modificar(pasajero, correo);
                             break;
                         case 2:
                             correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contraseña = JOptionPane.showInputDialog("Introducir contraseña");
-                            conductor = new Conductor(nombre, correo, contraseña);
+                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+                            conductor = new Conductor(nombre, correo, contrasena);
                             conductor.modificar(conductor, correo);
                             break;
                         case 3:
                             correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contraseña = JOptionPane.showInputDialog("Introducir contraseña");
-                            administrador = new AdministradorAdapter(nombre, correo, contraseña);
+                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+                            administrador = new AdministradorAdapter(nombre, correo, contrasena);
                             administrador.modificar(administrador, correo);
                             break;
                         case 4:
