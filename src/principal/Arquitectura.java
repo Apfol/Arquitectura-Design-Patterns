@@ -1,11 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+3e * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adapter;
+package principal;
 
 import javax.swing.JOptionPane;
+
+import adapter.AdministradorAdapter;
+import adapter.Conductor;
+import adapter.Pasajero;
+import adapter.Usuario;
 
 /**
  *
@@ -27,12 +32,13 @@ public class Arquitectura {
         int opcion = 0;
 
         do {
+            
             opcion = Integer.parseInt(JOptionPane.showInputDialog(""
-                    + "Seleccione la opciÃ³n: \n"
-                    + "1. Crear usuario \n"
+                    + "Seleccione la opción: \n"
+                    + "1. Registrar usuario \n"
                     + "2. Modificar usuario \n"
                     + "3. Eliminar usuario \n"
-                    + "4. Consultar usuario \n"
+                    + "4. Acceder al sistema \n"
                     + "0. Salir"));
             switch (opcion) {
                 case 1:
