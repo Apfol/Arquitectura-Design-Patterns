@@ -15,10 +15,13 @@ public class Facade {
 			if(us.getCorreo().equals(correo) && us.getContrasena().equals(pass)) {
 				//index = usuarios.indexOf(us);
 				tipoPasajero = obtenerTipo(us);
+			}else {
+				tipoPasajero = 0;
 			}
 		}
 		return tipoPasajero;
 	}
+	
 	private int obtenerTipo(Usuario us)
 	{
 		int tipoUsu = 0;

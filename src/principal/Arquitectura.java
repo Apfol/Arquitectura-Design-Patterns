@@ -128,7 +128,7 @@ public class Arquitectura {
                 case 4:
                 	correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
                     contrasena = JOptionPane.showInputDialog("Introducir contrasena");
-                    int tipoUsuario = facade.buscarTipoUsuario();
+                    int tipoUsuario = facade.verificarUsuario(correo, contrasena);
                     switch(tipoUsuario) {
                     case 1:
                     	//Pasajero
