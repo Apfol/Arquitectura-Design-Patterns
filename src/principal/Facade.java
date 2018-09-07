@@ -6,14 +6,19 @@ import adapter.*;
 public class Facade {
 	private static ArrayList<Usuario> usuarios = new ArrayList<>();
 	
-	public boolean verificarUsuario()
+	public boolean verificarUsuario(String correo, String pass)
 	{
 		boolean existe = false;
+		for(Usuario us: usuarios) {
+			if(us.getCorreo().equals(correo) && us.getContrasena().equals(pass)) {
+				existe = true;
+			}
+		}
 		
 		return existe;
 	}
 	
-	public void crearRegistroRuta()
+	public void crearRegistroRuta(String nombre)
 	{
 		
 	}
