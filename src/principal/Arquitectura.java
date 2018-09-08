@@ -26,6 +26,7 @@ public class Arquitectura {
         String nombre;
         String correo;
         String contrasena;
+        int documento;
         Usuario pasajero = new Pasajero();
         Usuario conductor = new Conductor();
         Usuario administrador = new AdministradorAdapter();
@@ -82,25 +83,28 @@ public class Arquitectura {
                             + "4. Regresar"));
                     switch (opcion2) {
                         case 1:
-                            correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
+                        	documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
+                            correo = JOptionPane.showInputDialog("Introducir correo");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+                            contrasena = JOptionPane.showInputDialog("Introducir contrase�a");
                             pasajero = new Pasajero(nombre, correo, contrasena);
-                            pasajero.modificar(pasajero, correo);
+                            pasajero.modificar(pasajero, documento);
                             break;
                         case 2:
-                            correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
+                        	documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
+                            correo = JOptionPane.showInputDialog("Introducir correo");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
                             contrasena = JOptionPane.showInputDialog("Introducir contraseña");
                             conductor = new Conductor(nombre, correo, contrasena);
-                            conductor.modificar(conductor, correo);
+                            conductor.modificar(conductor, documento);
                             break;
                         case 3:
-                            correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
+                        	documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
+                            correo = JOptionPane.showInputDialog("Introducir correo");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
                             contrasena = JOptionPane.showInputDialog("Introducir contraseña");
                             administrador = new AdministradorAdapter(nombre, correo, contrasena);
-                            administrador.modificar(administrador, correo);
+                            administrador.modificar(administrador, documento);
                             break;
                         case 4:
                     }
@@ -111,16 +115,16 @@ public class Arquitectura {
                             + "2. Conductor \n"
                             + "3. Administrador \n"
                             + "4. Regresar"));
-                    correo = JOptionPane.showInputDialog("Introduce el correo del usuario a eliminar");
+                    documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
                     switch (opcion3) {
                         case 1:
-                            pasajero.eliminar(correo);
+                            pasajero.eliminar(documento);
                             break;
                         case 2:
-                            conductor.eliminar(correo);
+                            conductor.eliminar(documento);
                             break;
                         case 3:
-                            administrador.eliminar(correo);
+                            administrador.eliminar(documento);
                             break;
                         case 4:
                     }
