@@ -72,7 +72,7 @@ public class Facade {
 	}
 
 	public void modificarReservaPasajero(String nombreReservaModificar, String lugarOrigenModificado, String lugarDestinoModificado, String nombreRutaReservadaModificado, String puestoRutaReservadaModificado, int documentoPasajero) {
-
+		//NO SE DEBE MODIFICAR NOMBRE DE RESERVA
 	}
 
 	public void eliminarReserva(String nombreReservaEliminar, int documentoPasajero) {
