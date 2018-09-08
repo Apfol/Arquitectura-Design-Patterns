@@ -11,4 +11,5 @@ package composite;
  */
 public interface Componente {
     public void mostrarDatos();
+    public String obtenerDatos();
 }

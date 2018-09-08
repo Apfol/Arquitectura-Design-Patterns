@@ -21,7 +21,7 @@ public class Pasajero extends Usuario {
     public Pasajero() {
     }
 
-    @Override
+/*    @Override
     public void consultar() {
         String datosUsuarios = "";
         ArrayList<Usuario> usuarios = this.getUsuarios();
@@ -41,6 +41,6 @@ public class Pasajero extends Usuario {
                 usuarios.remove(us);
             }
         }
-    }
+    }*/
 
 }

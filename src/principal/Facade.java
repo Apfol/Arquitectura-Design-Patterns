@@ -54,7 +54,18 @@ public class Facade {
 
 	//Robinson
 	public String listarRutasConductor(int documento) {
-		return "";
+		String infoRutas = "No se encontraron las rutas para el documento "+ documento;
+		String info = "";
+		for(Ruta rut: rutas)
+		{
+			if(rut.getDocumentoConductor() == documento)
+			{
+				info += "\n"+ rut.toString();
+			}
+			
+		}
+		
+		return (info.isEmpty() ? infoRutas: info);
 	}
 
 	public void actualizarRuta(String nombreRutaModificar, String nombreRutaNuevo, ArrayList<Componente> callesModificadas, int documentoConductor) {
@@ -68,9 +79,12 @@ public class Facade {
 			position++;
 		}
 	}
-	
-	//Robinson
-	public void eliminarRuta(String nombreRutaEliminar, int documentoConductor) {
+
+	public void eliminarRuta(int indice, int documentoConductor) {
+		// Antes mostrarle lista y decirle cual quiere eliminar desde 1 y pasar el indice
+		if(rutas.get(indice).getDocumentoConductor() == documentoConductor) {
+			rutas.remove(indice);
+		}
 
 	}
 
