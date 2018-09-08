@@ -56,15 +56,11 @@ public class Facade {
 	public String listarRutasConductor(int documento) {
 		String infoRutas = "No se encontraron las rutas para el documento "+ documento;
 		String info = "";
-		for(Ruta rut: rutas)
-		{
-			if(rut.getDocumentoConductor() == documento)
-			{
-				info += "\n"+ rut.toString();
+		for(int i=0; i < rutas.size(); i++) {
+			if(rutas.get(i).getDocumentoConductor() == documento) {
+				info += (i++) + rutas.get(i).obtenerDatos()+"\n\n";
 			}
-			
 		}
-		
 		return (info.isEmpty() ? infoRutas: info);
 	}
 
