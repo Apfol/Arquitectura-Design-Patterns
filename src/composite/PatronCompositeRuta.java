@@ -22,7 +22,7 @@ public class PatronCompositeRuta {
         Componente c5 = new Calle("251.6.2.6", "143.2.56.3", "632.6.2.5", "14.42.5", "Calle 45", "30 mts");
         Componente c6 = new Calle("131.4.2.4", "2424.2.3.", "2442.1.3.", "243.2.2.", "Calle 60", "50 mts");
         
-        Ruta a = new Ruta("Ruta 1");
+        /*Ruta a = new Ruta("Ruta 1");
         Ruta b = new Ruta("Ruta 2");
         Ruta c = new Ruta("Ruta 3");
         
@@ -37,7 +37,7 @@ public class PatronCompositeRuta {
         c.add(c4);
         c.add(c5);
         c.add(c6);
-        c.mostrarDatos();
+        c.mostrarDatos();*/
     }
     
 }

@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class Conductor extends Usuario{
     
-    public Conductor(String nombre, String correo, String contrasena) {
-        super(nombre, correo, contrasena);
+    public Conductor(String nombre, String correo, String contrasena, int documento) {
+        super(nombre, correo, contrasena, documento);
     }
     
     public Conductor() {
@@ -35,15 +35,10 @@ public class Conductor extends Usuario{
     }
 
     @Override
-    public String toString() {
-        return "Conductor"; //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void eliminar(String correo) {
+    public void eliminar(int documento) {
         ArrayList<Usuario> usuarios = this.getUsuarios();
         for (Usuario us: usuarios) {
-            if(us.getCorreo().equals(correo)) {
+            if(us.getDocumento() == documento) {
                 usuarios.remove(us);
             }
         }
