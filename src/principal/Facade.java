@@ -37,11 +37,6 @@ public class Facade {
 		}
 		return tipoUsu;
 	}
-	
-	public void crearRegistroRuta(String nombre, String correoUs){
-		
-	
-	}
 		
 	public Usuario obtenerUsuario(String correo, String pass) {
 		for (Usuario us : usuarios) {
