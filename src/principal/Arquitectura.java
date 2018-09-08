@@ -6,6 +6,7 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -140,16 +141,31 @@ public class Arquitectura {
 									+ "3. Modificar reserva \n" + "4. Eliminar reserva \n" + "0. salir \n"));
 					switch (opcion) {
 					case 1:
-						facade.crearRegistroReserva();
+						//Crear registro reserva
+						String nombreReserva = "Reserva " + usuario.hashCode();
+						String lugarOrigen = JOptionPane.showInputDialog("Introducir lugar origen");
+						String lugarDestino = JOptionPane.showInputDialog("Introducir lugar destino");
+						String nombreRutaReservada = JOptionPane.showInputDialog("Introducir nombre de ruta a reservar");
+						String puestoRutaReservada = JOptionPane.showInputDialog("Introducir puesto a reservar");
+						facade.crearRegistroReserva(nombreReserva, lugarOrigen, lugarDestino, nombreRutaReservada, puestoRutaReservada, usuario.getDocumento());
 						break;
 					case 2:
-						facade.listarReservasPasajero();
+						//Listar reservas
+						JOptionPane.showMessageDialog(null, facade.listarReservasPasajero(usuario.getDocumento()));
 						break;
 					case 3:
-						facade.modificarReservaPasajero();
+						//Modificar reserva
+						String nombreReservaModificar = JOptionPane.showInputDialog("Introducir nombre de reserva a modificar");
+						String lugarOrigenModificado = JOptionPane.showInputDialog("Introducir lugar origen");
+						String lugarDestinoModificado = JOptionPane.showInputDialog("Introducir lugar destino");
+						String nombreRutaReservadaModificado = JOptionPane.showInputDialog("Introducir nombre de ruta a reservar");
+						String puestoRutaReservadaModificado = JOptionPane.showInputDialog("Introducir puesto a reservar");
+						facade.modificarReservaPasajero(nombreReservaModificar, lugarOrigenModificado, lugarDestinoModificado, nombreRutaReservadaModificado, puestoRutaReservadaModificado, usuario.getDocumento());
 						break;
 					case 4:
-						facade.eliminarReserva();
+						//Eliminar reserva
+						String nombreReservaEliminar = JOptionPane.showInputDialog("Introducir nombre de reserva a eliminar");
+						facade.eliminarReserva(nombreReservaEliminar, usuario.getDocumento());
 						break;
 					case 0:
 						break;
@@ -162,6 +178,7 @@ public class Arquitectura {
 					boolean agregarCalle;
 					switch (opcion) {
 					case 1:
+						//Crear registro ruta
 						String nombreRuta = JOptionPane.showInputDialog("Introducir nombre de ruta");
 						ArrayList<Componente> calles = new ArrayList<Componente>();
 						agregarCalle = true;
@@ -188,9 +205,11 @@ public class Arquitectura {
 						facade.crearRegistroRuta(nombreRuta, calles, usuario.getDocumento());
 						break;
 					case 2:
+						//Listar rutas
 						JOptionPane.showMessageDialog(null, facade.listarRutasConductor(usuario.getDocumento()));
 						break;
 					case 3:
+						//Modificar ruta
 						String nombreRutaModificar = JOptionPane.showInputDialog("Introducir nombre de ruta a modificar");
 						String nombreRutaNuevo = JOptionPane.showInputDialog("Introducir nuevo nombre de ruta");
 						ArrayList<Componente> callesModificadas = new ArrayList<Componente>();
@@ -218,6 +237,7 @@ public class Arquitectura {
 						facade.actualizarRuta(nombreRutaModificar, nombreRutaNuevo, callesModificadas, usuario.getDocumento());
 						break;
 					case 4:
+						//Eliminar ruta
 						String nombreRutaEliminar = JOptionPane.showInputDialog("Introducir nombre de ruta a eliminar");
 						facade.eliminarRuta(nombreRutaEliminar, usuario.getDocumento());
 						break;

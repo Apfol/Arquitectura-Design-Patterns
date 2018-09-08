@@ -68,19 +68,19 @@ public class Facade {
 
 	}
 
-	public void crearRegistroReserva() {
+	public void crearRegistroReserva(String nombreReserva, String lugarOrigen, String lugarDestino, String nombreRutaReservada, String puestoRutaReservada, int documentoPasajero) {
 
 	}
 
-	public void listarReservasPasajero() {
+	public String listarReservasPasajero(int documentoPasajero) {
+		return "";
+	}
+
+	public void modificarReservaPasajero(String nombreReservaModificar, String lugarOrigenModificado, String lugarDestinoModificado, String nombreRutaReservadaModificado, String puestoRutaReservadaModificado, int documentoPasajero) {
 
 	}
 
-	public void modificarReservaPasajero() {
-
-	}
-
-	public void eliminarReserva() {
+	public void eliminarReserva(String nombreReservaEliminar, int documentoPasajero) {
 
 	}
 
