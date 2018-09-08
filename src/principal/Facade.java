@@ -33,7 +33,7 @@ public class Facade {
 		return tipoUsu;
 	}
 	
-	public void crearRegistroRuta(String nombre)
+	public void crearRegistroRuta(String nombre, String correoUs)
 	{
 		
 	}

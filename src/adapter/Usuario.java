@@ -16,6 +16,7 @@ public abstract class Usuario {
     private String nombre;
     private String correo;
     private String contrasena;
+    private int documento;
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
     public Usuario() {

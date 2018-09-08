@@ -166,7 +166,7 @@ public class Arquitectura {
                                 + "0. Salir \n"));
                     	switch (opcion) {
                     	case 1:
-                    		facade.crearRegistroRuta("");
+                    		facade.crearRegistroRuta();
                     		break;
                     	case 2:
                     		facade.listarRutasConductor();
