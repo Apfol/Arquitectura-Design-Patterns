@@ -105,5 +105,18 @@ public class Calle implements Componente{
                 "Coordenada X Destino: " + coordenadaXDestino + " ." +
                 "Coordenada Y Destino: " + coordenadaYDestino + " .");
     }
+    public String obtenerDatos()
+    {
+    	return this.toString();
+    }
+    
+	@Override
+	public String toString() {
+		return "Calle [coordenadaXOrigen=" + coordenadaXOrigen + ", coordenadaYOrigen=" + coordenadaYOrigen
+				+ ", coordenadaXDestino=" + coordenadaXDestino + ", coordenadaYDestino=" + coordenadaYDestino
+				+ ", nombre=" + nombre + ", distancia=" + distancia + ", tiempoNormal=" + tiempoNormal + "]";
+	}
+    
+    
     
 }

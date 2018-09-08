@@ -54,12 +54,24 @@ public class Ruta implements Componente{
 
     @Override
     public void mostrarDatos() {
-        System.out.println("Se mostró ruta: " + nombre + ".");
+        System.out.println("Se muestra ruta: " + nombre + ".");
         for(Componente c : componentes) c.mostrarDatos();
+    }
+    public String obtenerDatos()
+    {
+    	String infoComponentes = "";
+    	for(Componente c: componentes) {
+    		infoComponentes +=c.obtenerDatos();
+    	}
+    	return this.toString() + "\n\t"+infoComponentes;
     }
     
     public void add(Componente c) {
         getComponentes().add(c);
     }
     
+    @Override
+    public String toString() {
+    	return "Se muestra ruta: " + nombre + ".";
+    }
 }

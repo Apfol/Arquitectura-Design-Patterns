@@ -24,7 +24,7 @@ public class AdministradorAdapter extends Usuario {
         
     }
 
-    @Override
+/*    @Override
     public void consultar() {
         String datosUsuarios = "";
         ArrayList<Usuario> usuarios = this.getUsuarios();
@@ -44,7 +44,7 @@ public class AdministradorAdapter extends Usuario {
                 usuarios.remove(us);
             }
         }
-    }
+    }*/
 
     
 }
