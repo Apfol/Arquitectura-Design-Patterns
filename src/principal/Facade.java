@@ -12,8 +12,6 @@ public class Facade {
 	/*
 	 * Metodo que retorna el tipo de usuario.
 	 *  Retorna 0 si no existe, 1 si es pasajero y dos si es conductor
-	 * 
-	 * 
 	*/
 	public int verificarUsuario(String correo, String pass) {
 		int tipoPasajero = 0;
@@ -48,7 +46,7 @@ public class Facade {
 	}
 
 	public void crearRegistroRuta(String nombreRuta, ArrayList<Componente> calles, int documentoConductor) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public String listarRutasConductor(int documento) {
