@@ -17,7 +17,7 @@ public abstract class Usuario {
     private String correo;
     private String contrasena;
     private int documento;
-    private static ArrayList<Usuario> usuarios = new ArrayList<>();
+    //private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
     public Usuario() {
     }
@@ -31,7 +31,7 @@ public abstract class Usuario {
 
     
     
-    public void adicionar(Usuario usuario) {
+/*    public void adicionar(Usuario usuario) {
         usuarios.add(usuario);
     };
     public void modificar(Usuario usuario, int documento) {
@@ -46,9 +46,9 @@ public abstract class Usuario {
         usuarios.forEach((us) -> {
             System.out.println(us);
         });
-    };
-    abstract public void consultar();
-    abstract public void eliminar(int documento);
+    };*/
+    //abstract public void consultar();
+    //abstract public void eliminar(int documento);
 
     public String getNombre() {
         return nombre;
@@ -82,13 +82,13 @@ public abstract class Usuario {
 		this.documento = documento;
 	}
 
-	public static ArrayList<Usuario> getUsuarios() {
+/*	public static ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
     public static void setUsuarios(ArrayList<Usuario> usuarios) {
         Usuario.usuarios = usuarios;
-    }
+    }*/
    
   
 }

@@ -9,6 +9,12 @@ public class Facade {
 	private static ArrayList<Usuario> usuarios = new ArrayList<>();
 	private static ArrayList<Ruta> rutas = new ArrayList<>();
 
+	/*
+	 * Metodo que retorna el tipo de usuario.
+	 *  Retorna 0 si no existe, 1 si es pasajero y dos si es conductor
+	 * 
+	 * 
+	*/
 	public int verificarUsuario(String correo, String pass) {
 		int tipoPasajero = 0;
 		for (Usuario us : usuarios) {
@@ -32,11 +38,11 @@ public class Facade {
 		return tipoUsu;
 	}
 	
-<<<<<<< HEAD
-	public void crearRegistroRuta(String nombre, String correoUs)
-	{
+	public void crearRegistroRuta(String nombre, String correoUs){
 		
-=======
+	
+	}
+		
 	public Usuario obtenerUsuario(String correo, String pass) {
 		for (Usuario us : usuarios) {
 			if (us.getCorreo().equals(correo) && us.getContrasena().equals(pass)) {
@@ -44,7 +50,6 @@ public class Facade {
 			}
 		}
 		return null;
->>>>>>> 7eb22f275df8f1633860b4be2596f4249f524236
 	}
 
 	public void crearRegistroRuta(String nombreRuta, ArrayList<Componente> calles, int documentoConductor) {

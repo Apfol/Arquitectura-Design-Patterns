@@ -155,7 +155,6 @@ public class Arquitectura {
 					case 0:
 						break;
 
-<<<<<<< HEAD
         do {
             
             opcion = Integer.parseInt(JOptionPane.showInputDialog(""
@@ -310,7 +309,6 @@ public class Arquitectura {
                     break;
             }
         } while (opcion != 0);
-=======
 					}
 					break;
 				case 2:
@@ -389,7 +387,6 @@ public class Arquitectura {
 				break;
 			}
 		} while (opcion != 0);
->>>>>>> 7eb22f275df8f1633860b4be2596f4249f524236
 
 	}
 

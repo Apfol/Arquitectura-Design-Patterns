@@ -22,7 +22,7 @@ public class Conductor extends Usuario{
         
     }
 
-    @Override
+/*    @Override
     public void consultar() {
         String datosUsuarios = "";
         ArrayList<Usuario> usuarios = this.getUsuarios();
@@ -32,9 +32,9 @@ public class Conductor extends Usuario{
             }
         }
         JOptionPane.showMessageDialog(null, datosUsuarios);
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void eliminar(int documento) {
         ArrayList<Usuario> usuarios = this.getUsuarios();
         for (Usuario us: usuarios) {
@@ -42,6 +42,6 @@ public class Conductor extends Usuario{
                 usuarios.remove(us);
             }
         }
-    }
+    }*/
    
 }
