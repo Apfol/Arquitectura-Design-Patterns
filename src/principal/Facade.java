@@ -41,16 +41,15 @@ public class Facade {
 		return null;
 	}
 
-	public void crearRegistroRuta(Ruta ruta, int documento) {
+	public void crearRegistroRuta(String nombreRuta, ArrayList<Componente> calles, int documentoConductor) {
 		// TODO Auto-generated method stub
-		
 	}
 
-	public void listarRutasConductor() {
-
+	public String listarRutasConductor(int documento) {
+		return "";
 	}
 
-	public void actualizarRuta() {
+	public void actualizarRuta(String nombreRutaModificar, String nombreRutaNuevo, ArrayList<Componente> callesModificadas, int documentoConductor) {
 
 	}
 
