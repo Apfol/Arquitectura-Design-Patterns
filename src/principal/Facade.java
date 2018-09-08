@@ -53,7 +53,7 @@ public class Facade {
 
 	}
 
-	public void eliminarRuta() {
+	public void eliminarRuta(String nombreRutaEliminar, int documentoConductor) {
 
 	}
 

@@ -220,7 +220,8 @@ public class Arquitectura {
 						facade.actualizarRuta(nombreRutaModificar, nombreRutaNuevo, callesModificadas, usuario.getDocumento());
 						break;
 					case 4:
-						facade.eliminarRuta();
+						String nombreRutaEliminar = JOptionPane.showInputDialog("Introducir nombre de ruta a eliminar");
+						facade.eliminarRuta(nombreRutaEliminar, usuario.getDocumento());
 						break;
 					case 0:
 						break;
