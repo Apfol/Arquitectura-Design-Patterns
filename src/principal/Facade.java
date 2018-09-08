@@ -84,4 +84,19 @@ public class Facade {
 
 	}
 
+	public void registrarUsuario(String nombre, int documento, String correo, String contrasena) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void modificarUsuario(String nombre, int documento, String correo, String contrasena) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void eliminarUsuario(int documento) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
