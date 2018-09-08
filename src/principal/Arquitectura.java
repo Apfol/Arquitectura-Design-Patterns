@@ -11,6 +11,9 @@ import adapter.AdministradorAdapter;
 import adapter.Conductor;
 import adapter.Pasajero;
 import adapter.Usuario;
+import composite.Calle;
+import composite.Componente;
+import composite.Ruta;
 
 /**
  *
@@ -133,8 +136,9 @@ public class Arquitectura {
                     }
                     break;
                 case 4:
-                	correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
+                	correo = JOptionPane.showInputDialog("Introducir correo");
                     contrasena = JOptionPane.showInputDialog("Introducir contrasena");
+                    Usuario usuario = facade.obtenerUsuario(correo, contrasena);
                     int tipoUsuario = facade.verificarUsuario(correo, contrasena);
                     switch(tipoUsuario) {
                     case 1:
@@ -173,7 +177,25 @@ public class Arquitectura {
                                 + "0. Salir \n"));
                     	switch (opcion) {
                     	case 1:
-                    		facade.crearRegistroRuta("");
+                    		String nombreRuta = JOptionPane.showInputDialog("Introducir nombre de ruta");
+                    		Ruta ruta = new Ruta(nombreRuta);
+                    		boolean agregarCalle = true;
+                    		while(agregarCalle) {
+                    			String nombreCalle = JOptionPane.showInputDialog("Introducir nombre de calle");
+                        		String distanciaCalle = JOptionPane.showInputDialog("Introducir distancia de calle");
+                        		String coordenadaXOrigenCalle = JOptionPane.showInputDialog("Introducir coordenada X de Origen");
+                        		String coordenadaYOrigenCalle = JOptionPane.showInputDialog("Introducir coordenada Y de Origen");
+                        		String coordenadaXDestinoCalle = JOptionPane.showInputDialog("Introducir coordenada X de Destino");
+                        		String coordenadaYDestinoCalle = JOptionPane.showInputDialog("Introducir coordenada Y de Destino");
+                        		Componente calle = new Calle(coordenadaXOrigenCalle, coordenadaYOrigenCalle, coordenadaXDestinoCalle, coordenadaYDestinoCalle, nombreCalle, distanciaCalle);
+                        		ruta.add(calle);
+                        		
+                        		int option = JOptionPane.showConfirmDialog(null, "¿Deseas agregar otra calle?");
+                        		if(option == JOptionPane.NO_OPTION) {
+                        			agregarCalle = false;
+                        		}
+                    		}
+                    		facade.crearRegistroRuta(ruta, usuario.getDocumento());
                     		break;
                     	case 2:
                     		facade.listarRutasConductor();
