@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Ruta implements Componente{
     
     private String nombre;
+    private String correoUs;
     private ArrayList <Componente> componentes;
     private int documentoConductor;
 
@@ -48,7 +49,15 @@ public class Ruta implements Componente{
         return componentes;
     }
 
-    public void setComponentes(ArrayList<Componente> componentes) {
+    public String getCorreoUs() {
+		return correoUs;
+	}
+
+	public void setCorreoUs(String correoUs) {
+		this.correoUs = correoUs;
+	}
+
+	public void setComponentes(ArrayList<Componente> componentes) {
         this.componentes = componentes;
     }
 
