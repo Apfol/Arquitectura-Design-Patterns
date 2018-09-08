@@ -43,23 +43,63 @@ public class Arquitectura {
 							+ "3. Eliminar usuario \n" + "4. Acceder al sistema \n" + "0. Salir"));
 			switch (opcion) {
 			case 1:
-				nombre = JOptionPane.showInputDialog("Introducir nombre");
-				documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
-				correo = JOptionPane.showInputDialog("Introducir correo");
-				contrasena = JOptionPane.showInputDialog("Introducir contraseÃ±a");
-				facade.registrarUsuario(nombre, documento, correo, contrasena);
+				int opcion1 = Integer.parseInt(JOptionPane.showInputDialog(
+						"" + "1. Pasajero \n" + "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
+				switch (opcion1) {
+				case 1:
+					nombre = JOptionPane.showInputDialog("Introducir nombre");
+					correo = JOptionPane.showInputDialog("Introducir correo");
+					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+					documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
+					facade.registrarPasajero(nombre, documento, correo, contrasena);
+					break;
+				case 2:
+					nombre = JOptionPane.showInputDialog("Introducir nombre");
+					correo = JOptionPane.showInputDialog("Introducir correo");
+					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+					documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
+					facade.registrarConductor(nombre, documento, correo, contrasena);
+					break;
+				case 3:
+					nombre = JOptionPane.showInputDialog("Introducir nombre");
+					correo = JOptionPane.showInputDialog("Introducir correo");
+					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+					documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
+					facade.registrarAdministrador(nombre, documento, correo, contrasena);
+					break;
+				case 4:
+				}
 				break;
 			case 2:
-				documento = Integer
-						.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a modificar"));
-				correo = JOptionPane.showInputDialog("Introducir correo");
-				nombre = JOptionPane.showInputDialog("Introducir nombre");
-				contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-				facade.modificarUsuario(nombre, documento, correo, contrasena);
+				int opcion2 = Integer.parseInt(JOptionPane.showInputDialog(
+						"" + "1. Pasajero \n" + "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
+				switch (opcion2) {
+				case 1:
+					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del pasajero a modificar"));
+					nombre = JOptionPane.showInputDialog("Introducir nombre");
+					correo = JOptionPane.showInputDialog("Introducir correo");
+					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+					facade.modificarPasajero(nombre, documento, correo, contrasena);
+					break;
+				case 2:
+					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del conductor a modificar"));
+					nombre = JOptionPane.showInputDialog("Introducir nombre");
+					correo = JOptionPane.showInputDialog("Introducir correo");
+					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+					facade.modificarConductor(nombre, documento, correo, contrasena);
+					break;
+				case 3:
+					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del administrador a modificar"));
+					nombre = JOptionPane.showInputDialog("Introducir nombre");
+					correo = JOptionPane.showInputDialog("Introducir correo");
+					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
+					facade.modificarAdministrador(nombre, documento, correo, contrasena);
+					break;
+				case 4:
+				}
 				break;
 			case 3:
-				documento = Integer
-						.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
+				documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
 				facade.eliminarUsuario(documento);
 				break;
 			case 4:

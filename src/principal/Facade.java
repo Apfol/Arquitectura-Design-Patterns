@@ -6,8 +6,9 @@ import adapter.*;
 import composite.*;
 
 public class Facade {
-	private static ArrayList<Usuario> usuarios = new ArrayList<>();
-	private static ArrayList<Ruta> rutas = new ArrayList<>();
+	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	private static ArrayList<Ruta> rutas = new ArrayList<Ruta>();
+	private static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 
 	/*
 	 * Metodo que retorna el tipo de usuario.
@@ -46,50 +47,113 @@ public class Facade {
 	}
 
 	public void crearRegistroRuta(String nombreRuta, ArrayList<Componente> calles, int documentoConductor) {
-		
+		Ruta ruta = new Ruta(nombreRuta, documentoConductor);
+		ruta.setComponentes(calles);
+		rutas.add(ruta);
 	}
 
+	//Robinson
 	public String listarRutasConductor(int documento) {
 		return "";
 	}
 
 	public void actualizarRuta(String nombreRutaModificar, String nombreRutaNuevo, ArrayList<Componente> callesModificadas, int documentoConductor) {
-
+		int position = 0;
+		for(Ruta ru: rutas) {
+			if(ru.getNombre().equals(nombreRutaModificar)) {
+				Ruta rutaNueva = new Ruta(nombreRutaNuevo, documentoConductor);
+				rutaNueva.setComponentes(callesModificadas);
+				rutas.set(position, rutaNueva);
+			}
+			position++;
+		}
 	}
-
+	
+	//Robinson
 	public void eliminarRuta(String nombreRutaEliminar, int documentoConductor) {
 
 	}
 
+	//Robinson
 	public void crearRegistroReserva(String nombreReserva, String lugarOrigen, String lugarDestino, String nombreRutaReservada, String puestoRutaReservada, int documentoPasajero) {
 
 	}
 
 	public String listarReservasPasajero(int documentoPasajero) {
-		return "";
+		String lista = "";
+		for(Reserva re: reservas) {
+			if(re.getDocumentoPasajero() == documentoPasajero) {
+				lista += "Nombre reserva: " + re.getNombreReserva() 
+					+  "Nombre ruta reservada: " +re.getNombreRutaReservada()
+					+ ". Puesto reservado: " + re.getPuestoAReservar()
+					+ ". Lugar origen: " + re.getLugarOrigen()
+					+ ". Luger destino: " + re.getLugarDestino() + "\n";
+			}
+		}
+		return lista;
 	}
 
+	//Robinson
 	public void modificarReservaPasajero(String nombreReservaModificar, String lugarOrigenModificado, String lugarDestinoModificado, String nombreRutaReservadaModificado, String puestoRutaReservadaModificado, int documentoPasajero) {
 		//NO SE DEBE MODIFICAR NOMBRE DE RESERVA
 	}
 
 	public void eliminarReserva(String nombreReservaEliminar, int documentoPasajero) {
-
+		for(Reserva re: reservas) {
+			if(re.getDocumentoPasajero() == documentoPasajero && re.getNombreReserva() == nombreReservaEliminar) {
+				reservas.remove(re);
+			}
+		}
 	}
 
-	public void registrarUsuario(String nombre, int documento, String correo, String contrasena) {
-		// TODO Auto-generated method stub
-		
+	public void registrarPasajero(String nombre, int documento, String correo, String contrasena) {
+		usuarios.add(new Pasajero(nombre, correo, contrasena, documento));
 	}
 
-	public void modificarUsuario(String nombre, int documento, String correo, String contrasena) {
-		// TODO Auto-generated method stub
-		
+	public void modificarPasajero(String nombre, int documento, String correo, String contrasena) {
+		int position = 0;
+		for(Usuario us: usuarios) {
+			if(us.getDocumento() == documento) {
+				usuarios.set(position, new Pasajero(nombre, correo, contrasena, documento));
+			}
+			position++;
+		}
 	}
 
 	public void eliminarUsuario(int documento) {
-		// TODO Auto-generated method stub
-		
+		for(Usuario us: usuarios) {
+			if(us.getDocumento() == documento) {
+				usuarios.remove(us);
+			}
+		}
+	}
+	
+	public void registrarConductor(String nombre, int documento, String correo, String contrasena) {
+		usuarios.add(new Conductor(nombre, correo, contrasena, documento));
+	}
+
+	public void modificarConductor(String nombre, int documento, String correo, String contrasena) {
+		int position = 0;
+		for(Usuario us: usuarios) {
+			if(us.getDocumento() == documento) {
+				usuarios.set(position, new Conductor(nombre, correo, contrasena, documento));
+			}
+			position++;
+		}
+	}
+	
+	public void registrarAdministrador(String nombre, int documento, String correo, String contrasena) {
+		usuarios.add(new AdministradorAdapter(nombre, correo, contrasena, documento));
+	}
+
+	public void modificarAdministrador(String nombre, int documento, String correo, String contrasena) {
+		int position = 0;
+		for(Usuario us: usuarios) {
+			if(us.getDocumento() == documento) {
+				usuarios.set(position, new AdministradorAdapter(nombre, correo, contrasena, documento));
+			}
+			position++;
+		}
 	}
 
 }

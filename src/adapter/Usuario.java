@@ -22,9 +22,9 @@ public abstract class Usuario {
     public Usuario() {
     }
     
-    public Usuario(String nombre, String usuario, String contrasena, int documento) {
+    public Usuario(String nombre, String correo, String contrasena, int documento) {
         this.nombre = nombre;
-        this.correo = usuario;
+        this.correo = correo;
         this.contrasena= contrasena;
         this.documento = documento;
     }
