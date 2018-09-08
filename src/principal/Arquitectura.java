@@ -40,7 +40,6 @@ public class Arquitectura {
 		Facade facade = new Facade();
 
 		do {
-
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
 					"" + "Seleccione la opci�n: \n" + "1. Registrar usuario \n" + "2. Modificar usuario \n"
 							+ "3. Eliminar usuario \n" + "4. Acceder al sistema \n" + "0. Salir"));
@@ -55,7 +54,7 @@ public class Arquitectura {
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contrase�a");
 					pasajero = new Pasajero(nombre, correo, contrasena, documento);
-					pasajero.adicionar(pasajero);
+					//pasajero.adicionar(pasajero);
 					break;
 				case 2:
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
@@ -63,7 +62,7 @@ public class Arquitectura {
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
 					conductor = new Conductor(nombre, correo, contrasena, documento);
-					conductor.adicionar(conductor);
+					//conductor.adicionar(conductor);
 					break;
 				case 3:
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
@@ -71,7 +70,7 @@ public class Arquitectura {
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
 					administrador = new AdministradorAdapter(nombre, correo, contrasena, documento);
-					administrador.adicionar(administrador);
+					//administrador.adicionar(administrador);
 					break;
 				case 4:
 				}
@@ -87,7 +86,7 @@ public class Arquitectura {
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					contrasena = JOptionPane.showInputDialog("Introducir contrase�a");
 					pasajero = new Pasajero(nombre, correo, contrasena, documento);
-					pasajero.modificar(pasajero, documento);
+					//pasajero.modificar(pasajero, documento);
 					break;
 				case 2:
 					documento = Integer
@@ -96,7 +95,7 @@ public class Arquitectura {
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
 					conductor = new Conductor(nombre, correo, contrasena, documento);
-					conductor.modificar(conductor, documento);
+					//conductor.modificar(conductor, documento);
 					break;
 				case 3:
 					documento = Integer
@@ -105,7 +104,7 @@ public class Arquitectura {
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					contrasena = JOptionPane.showInputDialog("Introducir contrase�a");
 					administrador = new AdministradorAdapter(nombre, correo, contrasena, documento);
-					administrador.modificar(administrador, documento);
+					//administrador.modificar(administrador, documento);
 					break;
 				case 4:
 				}
@@ -117,13 +116,13 @@ public class Arquitectura {
 						.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
 				switch (opcion3) {
 				case 1:
-					pasajero.eliminar(documento);
+					//pasajero.eliminar(documento);
 					break;
 				case 2:
-					conductor.eliminar(documento);
+					//conductor.eliminar(documento);
 					break;
 				case 3:
-					administrador.eliminar(documento);
+					//administrador.eliminar(documento);
 					break;
 				case 4:
 				}
@@ -154,161 +153,6 @@ public class Arquitectura {
 						break;
 					case 0:
 						break;
-
-        do {
-            
-            opcion = Integer.parseInt(JOptionPane.showInputDialog(""
-                    + "Seleccione la opci�n: \n"
-                    + "1. Registrar usuario \n"
-                    + "2. Modificar usuario \n"
-                    + "3. Eliminar usuario \n"
-                    + "4. Acceder al sistema \n"
-                    + "0. Salir"));
-            switch (opcion) {
-                case 1:
-                    int opcion1 = Integer.parseInt(JOptionPane.showInputDialog(""
-                            + "1. Pasajero \n"
-                            + "2. Conductor \n"
-                            + "3. Administrador \n"
-                            + "4. Regresar"));
-                    switch (opcion1) {
-                        case 1:
-                            nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            correo = JOptionPane.showInputDialog("Introducir correo");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            pasajero = new Pasajero(nombre, correo, contrasena);
-                            pasajero.adicionar(pasajero);
-                            break;
-                        case 2:
-                            nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            correo = JOptionPane.showInputDialog("Introducir correo");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            conductor = new Conductor(nombre, correo, contrasena);
-                            conductor.adicionar(conductor);
-                            break;
-                        case 3:
-                            nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            correo = JOptionPane.showInputDialog("Introducir correo");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            administrador = new AdministradorAdapter(nombre, correo, contrasena);
-                            administrador.adicionar(administrador);
-                            break;
-                        case 4:
-                    }
-                    break;
-                case 2:
-                    int opcion2 = Integer.parseInt(JOptionPane.showInputDialog(""
-                            + "1. Pasajero \n"
-                            + "2. Conductor \n"
-                            + "3. Administrador \n"
-                            + "4. Regresar"));
-                    switch (opcion2) {
-                        case 1:
-                            correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
-                            nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            pasajero = new Pasajero(nombre, correo, contrasena);
-                            pasajero.modificar(pasajero, correo);
-                            break;
-                        case 2:
-                            correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
-                            nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            conductor = new Conductor(nombre, correo, contrasena);
-                            conductor.modificar(conductor, correo);
-                            break;
-                        case 3:
-                            correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
-                            nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            administrador = new AdministradorAdapter(nombre, correo, contrasena);
-                            administrador.modificar(administrador, correo);
-                            break;
-                        case 4:
-                    }
-                    break;
-                case 3:
-                    int opcion3 = Integer.parseInt(JOptionPane.showInputDialog(""
-                            + "1. Pasajero \n"
-                            + "2. Conductor \n"
-                            + "3. Administrador \n"
-                            + "4. Regresar"));
-                    correo = JOptionPane.showInputDialog("Introduce el correo del usuario a eliminar");
-                    switch (opcion3) {
-                        case 1:
-                            pasajero.eliminar(correo);
-                            break;
-                        case 2:
-                            conductor.eliminar(correo);
-                            break;
-                        case 3:
-                            administrador.eliminar(correo);
-                            break;
-                        case 4:
-                    }
-                    break;
-                case 4:
-                	correo = JOptionPane.showInputDialog("Introduce el correo del usuario a modificar");
-                    contrasena = JOptionPane.showInputDialog("Introducir contrasena");
-                    int tipoUsuario = facade.verificarUsuario(correo, contrasena);
-                    switch(tipoUsuario) {
-                    case 1:
-                    	//Pasajero
-                    	opcion = Integer.parseInt(JOptionPane.showInputDialog(""
-                                + "1. Crear registro de reserva \n"
-                                + "2. Listar reservas \n"
-                                + "3. Modificar reserva \n"
-                                + "4. Eliminar reserva \n"
-                                + "0. salir \n"));
-                    	switch (opcion) {
-                    	case 1:
-                    		facade.crearRegistroReserva();
-                    		break;
-                    	case 2:
-                    		facade.listarReservasPasajero();
-                    		break;
-                    	case 3:
-                    		facade.modificarReservaPasajero();
-                    		break;
-                    	case 4:
-                    		facade.eliminarReserva();
-                    		break;
-                    	case 0:
-                    		break;
-                    		
-                    	}
-                    	break;
-                    case 2:
-                    	//Conductor
-                    	opcion = Integer.parseInt(JOptionPane.showInputDialog(""
-                                + "1. Crear ruta \n"
-                                + "2. Listar rutas \n"
-                                + "3. Modificar ruta \n"
-                                + "4. Eliminar ruta \n"
-                                + "0. Salir \n"));
-                    	switch (opcion) {
-                    	case 1:
-                    		facade.crearRegistroRuta();
-                    		break;
-                    	case 2:
-                    		facade.listarRutasConductor();
-                    		break;
-                    	case 3:
-                    		facade.actualizarRuta();
-                    		break;
-                    	case 4:
-                    		facade.eliminarRuta();
-                    		break;
-                    	case 0:
-                    		break;
-                    	}
-                    	break;
-                    }
-                    break;
-                case 0:
-                    break;
-            }
-        } while (opcion != 0);
 					}
 					break;
 				case 2:
