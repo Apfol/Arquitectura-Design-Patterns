@@ -53,23 +53,26 @@ public class Arquitectura {
                     switch (opcion1) {
                         case 1:
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
+                            documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
                             correo = JOptionPane.showInputDialog("Introducir correo");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            pasajero = new Pasajero(nombre, correo, contrasena);
+                            contrasena = JOptionPane.showInputDialog("Introducir contrase�a");
+                            pasajero = new Pasajero(nombre, correo, contrasena, documento);
                             pasajero.adicionar(pasajero);
                             break;
                         case 2:
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
+                            documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
                             correo = JOptionPane.showInputDialog("Introducir correo");
                             contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            conductor = new Conductor(nombre, correo, contrasena);
+                            conductor = new Conductor(nombre, correo, contrasena, documento);
                             conductor.adicionar(conductor);
                             break;
                         case 3:
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
+                            documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
                             correo = JOptionPane.showInputDialog("Introducir correo");
                             contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            administrador = new AdministradorAdapter(nombre, correo, contrasena);
+                            administrador = new AdministradorAdapter(nombre, correo, contrasena, documento);
                             administrador.adicionar(administrador);
                             break;
                         case 4:
@@ -87,7 +90,7 @@ public class Arquitectura {
                             correo = JOptionPane.showInputDialog("Introducir correo");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
                             contrasena = JOptionPane.showInputDialog("Introducir contrase�a");
-                            pasajero = new Pasajero(nombre, correo, contrasena);
+                            pasajero = new Pasajero(nombre, correo, contrasena, documento);
                             pasajero.modificar(pasajero, documento);
                             break;
                         case 2:
@@ -95,15 +98,15 @@ public class Arquitectura {
                             correo = JOptionPane.showInputDialog("Introducir correo");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
                             contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            conductor = new Conductor(nombre, correo, contrasena);
+                            conductor = new Conductor(nombre, correo, contrasena, documento);
                             conductor.modificar(conductor, documento);
                             break;
                         case 3:
                         	documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
                             correo = JOptionPane.showInputDialog("Introducir correo");
                             nombre = JOptionPane.showInputDialog("Introducir nombre");
-                            contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-                            administrador = new AdministradorAdapter(nombre, correo, contrasena);
+                            contrasena = JOptionPane.showInputDialog("Introducir contrase�a");
+                            administrador = new AdministradorAdapter(nombre, correo, contrasena, documento);
                             administrador.modificar(administrador, documento);
                             break;
                         case 4:

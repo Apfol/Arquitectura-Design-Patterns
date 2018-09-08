@@ -16,8 +16,8 @@ public class AdministradorAdapter extends Usuario {
 
     private Administrador administrador = new Administrador();
 
-    public AdministradorAdapter(String nombre, String usuario, String contrasena) {
-        super(nombre, usuario, contrasena);
+    public AdministradorAdapter(String nombre, String usuario, String contrasena, int documento) {
+        super(nombre, usuario, contrasena, documento);
     }
     
     public AdministradorAdapter() {
@@ -37,15 +37,10 @@ public class AdministradorAdapter extends Usuario {
     }
 
     @Override
-    public String toString() {
-        return "Adaptador Administrador"; //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void eliminar(String correo) {
+    public void eliminar(int documento) {
         ArrayList<Usuario> usuarios = this.getUsuarios();
         for (Usuario us: usuarios) {
-            if(us.getCorreo().equals(correo)) {
+            if(us.getDocumento() == documento) {
                 usuarios.remove(us);
             }
         }
