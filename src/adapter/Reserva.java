@@ -67,5 +67,12 @@ public class Reserva {
 	public void setNombreRutaReservada(String nombreRutaReservada) {
 		this.nombreRutaReservada = nombreRutaReservada;
 	}
+	
+	@Override
+	public String toString() {
+		return "Reserva [nombreReserva=" + nombreReserva + ", lugarOrigen=" + lugarOrigen + ", lugarDestino="
+				+ lugarDestino + ", puestoRutaReservada=" + puestoRutaReservada + ", nombreRutaReservada="
+				+ nombreRutaReservada + ", documentoPasajero=" + documentoPasajero + "]";
+	}
 
 }

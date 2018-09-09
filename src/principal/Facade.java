@@ -76,17 +76,24 @@ public class Facade {
 		}
 	}
 
-	public void eliminarRuta(int indice, int documentoConductor) {
-		// Antes mostrarle lista y decirle cual quiere eliminar desde 1 y pasar el indice
-		if(rutas.get(indice).getDocumentoConductor() == documentoConductor) {
-			rutas.remove(indice);
+	public void eliminarRuta(String nombreRuta, int documentoConductor) {
+		// Antes mostrarle lista y decirle cual quiere eliminar
+		System.out.println("antes"+rutas.size());
+		for(Ruta rut: rutas) {
+			if(rut.getNombre().equals(nombreRuta) && rut.getDocumentoConductor() == documentoConductor) {
+				System.out.println(rut);
+				rutas.remove(rut);
+			}
 		}
-
+		System.out.println("Desoues"+rutas.size());
+		
 	}
 
-	//Robinson
+	//Robinson el nombre de la ruta es la relacion TOca cambiarla creo
 	public void crearRegistroReserva(String nombreReserva, String lugarOrigen, String lugarDestino, String nombreRutaReservada, String puestoRutaReservada, int documentoPasajero) {
-
+		Reserva reserv = new Reserva(nombreReserva, lugarOrigen, lugarDestino, puestoRutaReservada, nombreRutaReservada, documentoPasajero);
+		reservas.add(reserv);
+		System.out.println("Reserva añadida"+reserv.toString());
 	}
 
 	public String listarReservasPasajero(int documentoPasajero) {
@@ -102,10 +109,36 @@ public class Facade {
 		}
 		return lista;
 	}
+	
+	public String listarReservasPas(int documentoPasajero) {
+		String lista = "No se encontraron reservas para el pasajero "+documentoPasajero;
+		String infoRes = "";
+		for(int i=0; i < reservas.size(); i++) {
+			if(reservas.get(i).getDocumentoPasajero() == documentoPasajero) {
+				infoRes += (i++)+reservas.get(i).toString() + "\n";
+			}
+		}
+		return (infoRes.isEmpty() ? lista: infoRes);
+	}
 
 	//Robinson
-	public void modificarReservaPasajero(String nombreReservaModificar, String lugarOrigenModificado, String lugarDestinoModificado, String nombreRutaReservadaModificado, String puestoRutaReservadaModificado, int documentoPasajero) {
+	public void modificarReservaPasajero(String nombreReservaModificar, String lugarOrigenModificado, 
+											String lugarDestinoModificado, String nombreRutaReservadaModificado,
+											String puestoRutaReservadaModificado, int documentoPasajero) {
 		//NO SE DEBE MODIFICAR NOMBRE DE RESERVA
+		for(Reserva res: reservas) {
+			
+			if(res.getNombreReserva().equals(nombreReservaModificar) && res.getDocumentoPasajero() == documentoPasajero) {
+				System.out.println("Antes de modificar "+res.toString());
+				res.setLugarOrigen((lugarOrigenModificado.isEmpty() ? res.getLugarOrigen() : lugarOrigenModificado));
+				res.setLugarDestino((lugarDestinoModificado.isEmpty() ? res.getLugarDestino(): lugarDestinoModificado));
+				res.setNombreRutaReservada((nombreRutaReservadaModificado.isEmpty() ? res.getNombreRutaReservada() : nombreRutaReservadaModificado));
+				res.setPuestoAReservar((puestoRutaReservadaModificado.isEmpty() ? res.getPuestoAReservar() : puestoRutaReservadaModificado));
+				//res.setDocumentoPasajero((documentoPasajero));
+				System.out.println("nueva"+ res.toString());
+			}
+		}
+		
 	}
 
 	public void eliminarReserva(String nombreReservaEliminar, int documentoPasajero) {

@@ -124,21 +124,26 @@ public class Arquitectura {
 						String puestoRutaReservada = JOptionPane.showInputDialog("Introducir puesto a reservar");
 						facade.crearRegistroReserva(nombreReserva, lugarOrigen, lugarDestino, nombreRutaReservada,
 								puestoRutaReservada, usuario.getDocumento());
+						
 						break;
 					case 2:
 						// Listar reservas
 						JOptionPane.showMessageDialog(null, facade.listarReservasPasajero(usuario.getDocumento()));
 						break;
 					case 3:
-						// Modificar reserva
+						// Modificar reserva ponerle id a reserva
+						
+						// Listar las reservas
 						String nombreReservaModificar = JOptionPane
-								.showInputDialog("Introducir nombre de reserva a modificar");
+								.showInputDialog("Introducir nombre de reserva a modificar\n"+facade.listarReservasPas(usuario.getDocumento()));
+						
 						String lugarOrigenModificado = JOptionPane.showInputDialog("Introducir lugar origen");
 						String lugarDestinoModificado = JOptionPane.showInputDialog("Introducir lugar destino");
 						String nombreRutaReservadaModificado = JOptionPane
 								.showInputDialog("Introducir nombre de ruta a reservar");
 						String puestoRutaReservadaModificado = JOptionPane
 								.showInputDialog("Introducir puesto a reservar");
+						
 						facade.modificarReservaPasajero(nombreReservaModificar, lugarOrigenModificado,
 								lugarDestinoModificado, nombreRutaReservadaModificado, puestoRutaReservadaModificado,
 								usuario.getDocumento());
