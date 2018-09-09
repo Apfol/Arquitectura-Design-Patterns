@@ -75,6 +75,7 @@ public class Arquitectura {
 						"" + "1. Pasajero \n" + "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
 				switch (opcion2) {
 				case 1:
+					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
 					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del pasajero a modificar"));
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
@@ -82,6 +83,7 @@ public class Arquitectura {
 					facade.modificarPasajero(nombre, documento, correo, contrasena);
 					break;
 				case 2:
+					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
 					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del conductor a modificar"));
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
@@ -89,6 +91,7 @@ public class Arquitectura {
 					facade.modificarConductor(nombre, documento, correo, contrasena);
 					break;
 				case 3:
+					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
 					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del administrador a modificar"));
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
@@ -99,13 +102,15 @@ public class Arquitectura {
 				}
 				break;
 			case 3:
-				documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del usuario a eliminar"));
+				System.out.println(facade.obtenerUsuarios());
+				documento = Integer.parseInt(JOptionPane.showInputDialog(null,"Introduce el documento del usuario a eliminar"));
 				facade.eliminarUsuario(documento);
 				break;
 			case 4:
 				correo = JOptionPane.showInputDialog("Introducir correo");
 				contrasena = JOptionPane.showInputDialog("Introducir contrasena");
 				Usuario usuario = facade.obtenerUsuario(correo, contrasena);
+				System.out.println(usuario);
 				int tipoUsuario = facade.verificarUsuario(correo, contrasena);
 				switch (tipoUsuario) {
 				case 1:

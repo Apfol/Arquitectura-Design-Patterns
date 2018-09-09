@@ -45,6 +45,14 @@ public class Facade {
 		}
 		return null;
 	}
+	
+	public String obtenerUsuarios() {
+		String info = "";
+		for(Usuario us: usuarios) {
+			info += us.toString() + "\n";
+		}
+		return info;
+	}
 
 	public void crearRegistroRuta(String nombreRuta, ArrayList<Componente> calles, int documentoConductor) {
 		Ruta ruta = new Ruta(nombreRuta, documentoConductor);

@@ -82,6 +82,12 @@ public abstract class Usuario {
 		this.documento = documento;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [nombre=" + nombre + ", correo=" + correo + ", contrasena=" + contrasena + ", documento="
+				+ documento + "]";
+	}
+
 /*	public static ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
