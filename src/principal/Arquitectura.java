@@ -6,17 +6,13 @@
 package principal;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-import adapter.AdministradorAdapter;
-import adapter.Conductor;
-import adapter.Pasajero;
+
 import adapter.Usuario;
 import composite.Calle;
 import composite.Componente;
-import composite.Ruta;
 
 /**
  *
@@ -36,6 +32,10 @@ public class Arquitectura {
 		int opcion = 0;
 
 		Facade facade = new Facade();
+		//LLenado de arreglos
+		facade.usuariosDummy();
+		facade.rutasDummy();
+		facade.reservasDummy();
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
@@ -231,7 +231,8 @@ public class Arquitectura {
 								usuario.getDocumento());
 						break;
 					case 4:
-						String nombreRutaEliminar = JOptionPane.showInputDialog(facade.listarRutasConductor(usuario.getDocumento()) + " \n\n Introducir nombre de ruta a eliminar");
+						String nombreRutaEliminar = JOptionPane.showInputDialog(facade.listarRutasConductor(usuario.getDocumento()) + " \n\n"
+								+ " Introducir nombre de ruta a eliminar");
 						facade.eliminarRuta(nombreRutaEliminar, usuario.getDocumento());
 						break;
 					case 0:

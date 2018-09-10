@@ -205,5 +205,41 @@ public class Facade {
 			position++;
 		}
 	}
+	
+	public void usuariosDummy() {
+		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", 1073525507));
+		usuarios.add(new Conductor("Sara Bustos", "sarabu@unisabana.edu.co", "sara123", 1045676829));
+		usuarios.add(new Pasajero("Ana Garcia", "anaga@unisabana.edu.co", "ana123", 1234567889));
+		usuarios.add(new Pasajero("Juan Correa", "juanco@unisabana.edu.co", "juan123", 216654382));
+		usuarios.add(new AdministradorAdapter("Jaime Contreras", "jaimeco@unisabana.edu.co", "jaime123", 106435678));
+	}
+	
+	public void rutasDummy() {
+		Componente c1 = new Calle("12.09.54", "14.23.64", "34.13.74", "345.26.42.5", "Calle 9", "9 mts");
+        Componente c2 = new Calle("34.25.1", "64.26.32.6", "32.75.47", "36.32.1345", "Calle 57", "14 mts");
+        Componente c3 = new Calle("52.63.7.2", "54.2.67.2", "3245.2.6.3", "32.1.5.3", "Calle 91", "16 mts");
+        
+        //Rutas de Jairo
+        Ruta ruta1 = new Ruta("Ruta 1",1073525507);
+        Ruta ruta2 = new Ruta("Ruta 2",1073525507);
+        //Rutas de Sara
+        Ruta ruta3 = new Ruta("Ruta 3",1045676829);
+      
+        ruta1.add(c1);
+        ruta2.add(c2);
+        ruta3.add(c3);
+        
+        rutas.add(ruta1);
+        rutas.add(ruta2);
+        rutas.add(ruta3);
+	}
+	
+	public void reservasDummy() {
+		//Reserva de Ana
+		reservas.add(new Reserva("Reserva 124738", "Calle 7", "Unisabana", "Delantero", "Ruta 1", 1234567889));
+		//Reserva de Juan
+		reservas.add(new Reserva("Reserva 5243446", "Unisabana", "Avenida Caracas", "Tresero lado izquiero", "Ruta 3", 216654382));
+	}
+	
 
 }
