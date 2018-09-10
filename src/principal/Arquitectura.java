@@ -231,7 +231,7 @@ public class Arquitectura {
 								usuario.getDocumento());
 						break;
 					case 4:
-						String nombreRutaEliminar = JOptionPane.showInputDialog("Introducir nombre de ruta a eliminar");
+						String nombreRutaEliminar = JOptionPane.showInputDialog(facade.listarRutasConductor(usuario.getDocumento()) + " \n\n Introducir nombre de ruta a eliminar");
 						facade.eliminarRuta(nombreRutaEliminar, usuario.getDocumento());
 						break;
 					case 0:

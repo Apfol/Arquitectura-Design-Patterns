@@ -85,7 +85,6 @@ public class Facade {
 	}
 
 	public void eliminarRuta(String nombreRuta, int documentoConductor) {
-		// Antes mostrarle lista y decirle cual quiere eliminar
 		System.out.println("antes"+rutas.size());
 		for(Ruta rut: rutas) {
 			if(rut.getNombre().equals(nombreRuta) && rut.getDocumentoConductor() == documentoConductor) {
