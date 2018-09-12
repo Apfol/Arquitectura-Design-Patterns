@@ -23,23 +23,13 @@ public class Conductor extends Usuario{
     }
 
     @Override
-    public void consultar(ArrayList<Usuario> usuarios) {
-        String datosUsuarios = "";
-        for (Usuario us: usuarios) {
-            if(us instanceof Conductor) {
-                datosUsuarios += us.getNombre() + " " + us.getCorreo() + "\n";
-            }
-        }
-        JOptionPane.showMessageDialog(null, datosUsuarios);
+    public void consultar() {
+       
     }
 
     @Override
-    public void eliminar(int documento, ArrayList<Usuario> usuarios) {
-        for (Usuario us: usuarios) {
-            if(us.getDocumento() == documento) {
-                usuarios.remove(us);
-            }
-        }
+    public void eliminar() {
+        
     }
    
 }

@@ -31,25 +31,22 @@ public abstract class Usuario {
 
     
     
-/*    public void adicionar(Usuario usuario) {
-        usuarios.add(usuario);
+    public void adicionar(String nombre, String correo, String contrasena, int documento) {
+    	this.nombre = nombre;
+        this.correo = correo;
+        this.contrasena= contrasena;
+        this.documento = documento;
     };
-    public void modificar(Usuario usuario, int documento) {
-        for (Usuario us: usuarios) {
-            if(us.documento == documento) {
-                usuarios.remove(us);
-            }
-            usuarios.add(usuario);
-        }
-    };
-    public void mostrarUsuarios() {
-        usuarios.forEach((us) -> {
-            System.out.println(us);
-        });
-    };*/
     
-    abstract public void consultar(ArrayList<Usuario> usuarios);
-    abstract public void eliminar(int documento, ArrayList<Usuario> usuarios);
+    public void modificar(String nombre, String correo, String contrasena, int documento) {
+    	this.nombre = nombre;
+        this.correo = correo;
+        this.contrasena= contrasena;
+        this.documento = documento;
+    };
+    
+    abstract public void consultar();
+    abstract public void eliminar();
 
     public String getNombre() {
         return nombre;
