@@ -47,8 +47,9 @@ public abstract class Usuario {
             System.out.println(us);
         });
     };*/
-    //abstract public void consultar();
-    //abstract public void eliminar(int documento);
+    
+    abstract public void consultar(ArrayList<Usuario> usuarios);
+    abstract public void eliminar(int documento, ArrayList<Usuario> usuarios);
 
     public String getNombre() {
         return nombre;

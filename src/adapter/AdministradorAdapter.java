@@ -24,10 +24,9 @@ public class AdministradorAdapter extends Usuario {
         
     }
 
-/*    @Override
-    public void consultar() {
+    @Override
+    public void consultar(ArrayList<Usuario> usuarios) {
         String datosUsuarios = "";
-        ArrayList<Usuario> usuarios = this.getUsuarios();
         for (Usuario us: usuarios) {
             if(us instanceof AdministradorAdapter) {
                 datosUsuarios += us.getNombre() + " " + us.getCorreo() + "\n";
@@ -37,14 +36,13 @@ public class AdministradorAdapter extends Usuario {
     }
 
     @Override
-    public void eliminar(int documento) {
-        ArrayList<Usuario> usuarios = this.getUsuarios();
+    public void eliminar(int documento, ArrayList<Usuario> usuarios) {
         for (Usuario us: usuarios) {
             if(us.getDocumento() == documento) {
                 usuarios.remove(us);
             }
         }
-    }*/
+    }
 
     
 }
