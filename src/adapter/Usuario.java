@@ -16,13 +16,13 @@ public abstract class Usuario {
     private String nombre;
     private String correo;
     private String contrasena;
-    private int documento;
+    private String documento;
     //private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
     public Usuario() {
     }
     
-    public Usuario(String nombre, String correo, String contrasena, int documento) {
+    public Usuario(String nombre, String correo, String contrasena, String documento) {
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena= contrasena;
@@ -31,14 +31,14 @@ public abstract class Usuario {
 
     
     
-    public void adicionar(String nombre, String correo, String contrasena, int documento) {
+    public void adicionar(String nombre, String correo, String contrasena, String documento) {
     	this.nombre = nombre;
         this.correo = correo;
         this.contrasena= contrasena;
         this.documento = documento;
     };
     
-    public void modificar(String nombre, String correo, String contrasena, int documento) {
+    public void modificar(String nombre, String correo, String contrasena, String documento) {
     	this.nombre = nombre;
         this.correo = correo;
         this.contrasena= contrasena;
@@ -72,11 +72,11 @@ public abstract class Usuario {
         this.correo = correo;
     }
     
-    public int getDocumento() {
+    public String getDocumento() {
 		return documento;
 	}
 
-	public void setDocumento(int documento) {
+	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
 

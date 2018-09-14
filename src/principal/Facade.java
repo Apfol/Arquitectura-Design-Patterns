@@ -54,25 +54,25 @@ public class Facade {
 		return info;
 	}
 
-	public void crearRegistroRuta(String nombreRuta, ArrayList<Componente> calles, int documentoConductor) {
+	public void crearRegistroRuta(String nombreRuta, ArrayList<Componente> calles, String documentoConductor) {
 		Ruta ruta = new Ruta(nombreRuta, documentoConductor);
 		ruta.setComponentes(calles);
 		rutas.add(ruta);
 	}
 
 	//Robinson
-	public String listarRutasConductor(int documento) {
+	public String listarRutasConductor(String documento) {
 		String infoRutas = "No se encontraron las rutas para el documento "+ documento;
 		String info = "";
 		for(int i=0; i < rutas.size(); i++) {
-			if(rutas.get(i).getDocumentoConductor() == documento) {
+			if(rutas.get(i).getDocumentoConductor().equals(documento)) {
 				info += (i++) + rutas.get(i).obtenerDatos()+"\n\n";
 			}
 		}
 		return (info.isEmpty() ? infoRutas: info);
 	}
 
-	public void actualizarRuta(String nombreRutaModificar, String nombreRutaNuevo, ArrayList<Componente> callesModificadas, int documentoConductor) {
+	public void actualizarRuta(String nombreRutaModificar, String nombreRutaNuevo, ArrayList<Componente> callesModificadas, String documentoConductor) {
 		int position = 0;
 		for(Ruta ru: rutas) {
 			if(ru.getNombre().equals(nombreRutaModificar)) {
@@ -84,10 +84,10 @@ public class Facade {
 		}
 	}
 
-	public void eliminarRuta(String nombreRuta, int documentoConductor) {
+	public void eliminarRuta(String nombreRuta, String documentoConductor) {
 		System.out.println("antes"+rutas.size());
 		for(Ruta rut: rutas) {
-			if(rut.getNombre().equals(nombreRuta) && rut.getDocumentoConductor() == documentoConductor) {
+			if(rut.getNombre().equals(nombreRuta) && rut.getDocumentoConductor().equals(documentoConductor)) {
 				System.out.println(rut);
 				rutas.remove(rut);
 			}
@@ -97,31 +97,29 @@ public class Facade {
 	}
 
 	//Robinson el nombre de la ruta es la relacion TOca cambiarla creo
-	public void crearRegistroReserva(String nombreReserva, String lugarOrigen, String lugarDestino, String nombreRutaReservada, String puestoRutaReservada, int documentoPasajero) {
-		Reserva reserv = new Reserva(nombreReserva, lugarOrigen, lugarDestino, puestoRutaReservada, nombreRutaReservada, documentoPasajero);
+	public void crearRegistroReserva(String nombreReserva, String nombreRutaReservada, int puestoRutaReservada, String documentoPasajero) {
+		Reserva reserv = new Reserva(nombreReserva, puestoRutaReservada, nombreRutaReservada, documentoPasajero);
 		reservas.add(reserv);
 		System.out.println("Reserva añadida"+reserv.toString());
 	}
 
-	public String listarReservasPasajero(int documentoPasajero) {
+	public String listarReservasPasajero(String documentoPasajero) {
 		String lista = "";
 		for(Reserva re: reservas) {
-			if(re.getDocumentoPasajero() == documentoPasajero) {
+			if(re.getDocumentoPasajero().equals(documentoPasajero) ) {
 				lista += "Nombre reserva: " + re.getNombreReserva() 
 					+  "Nombre ruta reservada: " +re.getNombreRutaReservada()
-					+ ". Puesto reservado: " + re.getPuestoAReservar()
-					+ ". Lugar origen: " + re.getLugarOrigen()
-					+ ". Luger destino: " + re.getLugarDestino() + "\n";
+					+ " \tPuesto reservado: " + re.getPuestoAReservar();
 			}
 		}
 		return lista;
 	}
 	
-	public String listarReservasPas(int documentoPasajero) {
+	public String listarReservasPas(String documentoPasajero) {
 		String lista = "No se encontraron reservas para el pasajero "+documentoPasajero;
 		String infoRes = "";
 		for(int i=0; i < reservas.size(); i++) {
-			if(reservas.get(i).getDocumentoPasajero() == documentoPasajero) {
+			if(reservas.get(i).getDocumentoPasajero().equals(documentoPasajero)) {
 				infoRes += (i++)+reservas.get(i).toString() + "\n";
 			}
 		}
@@ -129,18 +127,15 @@ public class Facade {
 	}
 
 	//Robinson
-	public void modificarReservaPasajero(String nombreReservaModificar, String lugarOrigenModificado, 
-											String lugarDestinoModificado, String nombreRutaReservadaModificado,
-											String puestoRutaReservadaModificado, int documentoPasajero) {
+	public void modificarReservaPasajero(String nombreReservaModificar, String nombreRutaReservadaModificado,
+											int puestoRutaReservadaModificado, String documentoPasajero) {
 		//NO SE DEBE MODIFICAR NOMBRE DE RESERVA
 		for(Reserva res: reservas) {
 			
-			if(res.getNombreReserva().equals(nombreReservaModificar) && res.getDocumentoPasajero() == documentoPasajero) {
+			if(res.getNombreReserva().equals(nombreReservaModificar) && res.getDocumentoPasajero().equals(documentoPasajero)) {
 				System.out.println("Antes de modificar "+res.toString());
-				res.setLugarOrigen((lugarOrigenModificado.isEmpty() ? res.getLugarOrigen() : lugarOrigenModificado));
-				res.setLugarDestino((lugarDestinoModificado.isEmpty() ? res.getLugarDestino(): lugarDestinoModificado));
 				res.setNombreRutaReservada((nombreRutaReservadaModificado.isEmpty() ? res.getNombreRutaReservada() : nombreRutaReservadaModificado));
-				res.setPuestoAReservar((puestoRutaReservadaModificado.isEmpty() ? res.getPuestoAReservar() : puestoRutaReservadaModificado));
+				res.setPuestoAReservar(puestoRutaReservadaModificado);
 				//res.setDocumentoPasajero((documentoPasajero));
 				System.out.println("nueva"+ res.toString());
 			}
@@ -148,58 +143,59 @@ public class Facade {
 		
 	}
 
-	public void eliminarReserva(String nombreReservaEliminar, int documentoPasajero) {
+	public void eliminarReserva(String nombreReservaEliminar, String documentoPasajero) {
 		for(Reserva re: reservas) {
-			if(re.getDocumentoPasajero() == documentoPasajero && re.getNombreReserva() == nombreReservaEliminar) {
+			if(re.getDocumentoPasajero().equals(documentoPasajero) && re.getNombreReserva() == nombreReservaEliminar) {
 				reservas.remove(re);
+				break;
 			}
 		}
 	}
 
-	public void registrarPasajero(String nombre, int documento, String correo, String contrasena) {
+	public void registrarPasajero(String nombre, String documento, String correo, String contrasena) {
 		usuarios.add(new Pasajero(nombre, correo, contrasena, documento));
 	}
 
-	public void modificarPasajero(String nombre, int documento, String correo, String contrasena) {
+	public void modificarPasajero(String nombre, String documento, String correo, String contrasena) {
 		int position = 0;
 		for(Usuario us: usuarios) {
-			if(us.getDocumento() == documento) {
+			if(us.getDocumento().equals(documento)) {
 				usuarios.set(position, new Pasajero(nombre, correo, contrasena, documento));
 			}
 			position++;
 		}
 	}
 
-	public void eliminarUsuario(int documento) {
+	public void eliminarUsuario(String documento) {
 		for(Usuario us: usuarios) {
-			if(us.getDocumento() == documento) {
+			if(us.getDocumento().equals(documento)) {
 				usuarios.remove(us);
 			}
 		}
 	}
 	
-	public void registrarConductor(String nombre, int documento, String correo, String contrasena) {
+	public void registrarConductor(String nombre, String documento, String correo, String contrasena) {
 		usuarios.add(new Conductor(nombre, correo, contrasena, documento));
 	}
 
-	public void modificarConductor(String nombre, int documento, String correo, String contrasena) {
+	public void modificarConductor(String nombre, String documento, String correo, String contrasena) {
 		int position = 0;
 		for(Usuario us: usuarios) {
-			if(us.getDocumento() == documento) {
+			if(us.getDocumento().equals(documento)) {
 				usuarios.set(position, new Conductor(nombre, correo, contrasena, documento));
 			}
 			position++;
 		}
 	}
 	
-	public void registrarAdministrador(String nombre, int documento, String correo, String contrasena) {
+	public void registrarAdministrador(String nombre, String documento, String correo, String contrasena) {
 		usuarios.add(new AdministradorAdapter(nombre, correo, contrasena, documento));
 	}
 
-	public void modificarAdministrador(String nombre, int documento, String correo, String contrasena) {
+	public void modificarAdministrador(String nombre, String documento, String correo, String contrasena) {
 		int position = 0;
 		for(Usuario us: usuarios) {
-			if(us.getDocumento() == documento) {
+			if(us.getDocumento().equals(documento)) {
 				usuarios.set(position, new AdministradorAdapter(nombre, correo, contrasena, documento));
 			}
 			position++;
@@ -207,11 +203,11 @@ public class Facade {
 	}
 	
 	public void usuariosDummy() {
-		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", 1073525507));
-		usuarios.add(new Conductor("Sara Bustos", "sarabu@unisabana.edu.co", "sara123", 1045676829));
-		usuarios.add(new Pasajero("Ana Garcia", "anaga@unisabana.edu.co", "ana123", 1234567889));
-		usuarios.add(new Pasajero("Juan Correa", "juanco@unisabana.edu.co", "juan123", 216654382));
-		usuarios.add(new AdministradorAdapter("Jaime Contreras", "jaimeco@unisabana.edu.co", "jaime123", 106435678));
+		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", "1073525507"));
+		usuarios.add(new Conductor("Sara Bustos", "sarabu@unisabana.edu.co", "sara123", "1045676829"));
+		usuarios.add(new Pasajero("Ana Garcia", "anaga@unisabana.edu.co", "ana123", "1234567889"));
+		usuarios.add(new Pasajero("Juan Correa", "juanco@unisabana.edu.co", "juan123", "216654382"));
+		usuarios.add(new AdministradorAdapter("Jaime Contreras", "jaimeco@unisabana.edu.co", "jaime123", "106435678"));
 	}
 	
 	public void rutasDummy() {
@@ -220,10 +216,10 @@ public class Facade {
         Componente c3 = new Calle("52.63.7.2", "54.2.67.2", "3245.2.6.3", "32.1.5.3", "Calle 91", "16 mts");
         
         //Rutas de Jairo
-        Ruta ruta1 = new Ruta("Ruta 1",1073525507);
-        Ruta ruta2 = new Ruta("Ruta 2",1073525507);
+        Ruta ruta1 = new Ruta("Ruta 1","1073525507");
+        Ruta ruta2 = new Ruta("Ruta 2","1073525507");
         //Rutas de Sara
-        Ruta ruta3 = new Ruta("Ruta 3",1045676829);
+        Ruta ruta3 = new Ruta("Ruta 3","1045676829");
       
         ruta1.add(c1);
         ruta2.add(c2);
@@ -236,9 +232,9 @@ public class Facade {
 	
 	public void reservasDummy() {
 		//Reserva de Ana
-		reservas.add(new Reserva("Reserva 124738", "Calle 7", "Unisabana", "Delantero", "Ruta 1", 1234567889));
+		reservas.add(new Reserva("Reserva 124738", 1, "Ruta 1", "1234567889"));
 		//Reserva de Juan
-		reservas.add(new Reserva("Reserva 5243446", "Unisabana", "Avenida Caracas", "Tresero lado izquiero", "Ruta 3", 216654382));
+		reservas.add(new Reserva("Reserva 5243446",3, "Ruta 3", "216654382"));
 	}
 	
 

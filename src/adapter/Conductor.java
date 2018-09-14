@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class Conductor extends Usuario{
     
-    public Conductor(String nombre, String correo, String contrasena, int documento) {
+    public Conductor(String nombre, String correo, String contrasena, String documento) {
         super(nombre, correo, contrasena, documento);
     }
     
