@@ -140,8 +140,8 @@ public class Arquitectura {
 						String nombreReservaModificar = JOptionPane
 								.showInputDialog("Introducir nombre de reserva a modificar\n"+facade.listarReservasPas(usuario.getDocumento()));
 						
-						String lugarOrigenModificado = JOptionPane.showInputDialog("Introducir lugar origen");
-						String lugarDestinoModificado = JOptionPane.showInputDialog("Introducir lugar destino");
+						//String lugarOrigenModificado = JOptionPane.showInputDialog("Introducir lugar origen");
+						//String lugarDestinoModificado = JOptionPane.showInputDialog("Introducir lugar destino");
 						String nombreRutaReservadaModificado = JOptionPane
 								.showInputDialog("Introducir nombre de ruta a reservar");
 						int puestoRutaReservadaModificado = Integer.parseInt(JOptionPane.showInputDialog("Introducir puesto a reservar"));
