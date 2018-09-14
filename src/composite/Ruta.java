@@ -15,9 +15,9 @@ public class Ruta implements Componente{
     
     private String nombre;
     private ArrayList <Componente> componentes;
-    private int documentoConductor;
+    private String documentoConductor;
 
-    public Ruta(String nombre, int documentoConductor) {
+    public Ruta(String nombre, String documentoConductor) {
         this.nombre = nombre;
         this.documentoConductor = documentoConductor;
         this.componentes = new ArrayList<>();
@@ -36,11 +36,11 @@ public class Ruta implements Componente{
         this.nombre = nombre;
     }
 
-    public int getDocumentoConductor() {
+    public String getDocumentoConductor() {
 		return documentoConductor;
 	}
 
-	public void setDocumentoConductor(int documentoConductor) {
+	public void setDocumentoConductor(String documentoConductor) {
 		this.documentoConductor = documentoConductor;
 	}
 

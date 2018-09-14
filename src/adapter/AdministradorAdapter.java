@@ -16,7 +16,7 @@ public class AdministradorAdapter extends Usuario {
 
     private Administrador administrador = new Administrador();
 
-    public AdministradorAdapter(String nombre, String usuario, String contrasena, int documento) {
+    public AdministradorAdapter(String nombre, String usuario, String contrasena, String documento) {
         super(nombre, usuario, contrasena, documento);
     }
     

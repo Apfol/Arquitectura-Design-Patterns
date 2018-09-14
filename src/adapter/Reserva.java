@@ -3,28 +3,28 @@ package adapter;
 public class Reserva {
 
 	private String nombreReserva;
-	private String lugarOrigen;
-	private String lugarDestino;
-	private String puestoRutaReservada;
+	//private String lugarOrigen;
+	//private String lugarDestino;
+	private int puestoRutaReservada;
 	private String nombreRutaReservada;
-	private int documentoPasajero;
+	private String documentoPasajero;
 
-	public Reserva(String nombreReserva, String lugarOrigen, String lugarDestino, String puestoAReservar,
-			String nombreRutaReservada, int documentoPasajero) {
-		super();
+	
+
+	public Reserva(String nombreReserva, int puestoRutaReservada, String nombreRutaReservada,
+			String documentoPasajero) {
+		
 		this.nombreReserva = nombreReserva;
-		this.lugarOrigen = lugarOrigen;
-		this.lugarDestino = lugarDestino;
-		this.puestoRutaReservada = puestoAReservar;
+		this.puestoRutaReservada = puestoRutaReservada;
 		this.nombreRutaReservada = nombreRutaReservada;
 		this.documentoPasajero = documentoPasajero;
 	}
 
-	public int getDocumentoPasajero() {
+	public String getDocumentoPasajero() {
 		return documentoPasajero;
 	}
 
-	public void setDocumentoPasajero(int documentoPasajero) {
+	public void setDocumentoPasajero(String documentoPasajero) {
 		this.documentoPasajero = documentoPasajero;
 	}
 
@@ -36,7 +36,7 @@ public class Reserva {
 		this.nombreReserva = nombreReserva;
 	}
 
-	public String getLugarOrigen() {
+/*	public String getLugarOrigen() {
 		return lugarOrigen;
 	}
 
@@ -50,13 +50,13 @@ public class Reserva {
 
 	public void setLugarDestino(String lugarDestino) {
 		this.lugarDestino = lugarDestino;
-	}
+	}*/
 
-	public String getPuestoAReservar() {
+	public int getPuestoAReservar() {
 		return puestoRutaReservada;
 	}
 
-	public void setPuestoAReservar(String puestoAReservar) {
+	public void setPuestoAReservar(int puestoAReservar) {
 		this.puestoRutaReservada = puestoAReservar;
 	}
 
@@ -67,12 +67,13 @@ public class Reserva {
 	public void setNombreRutaReservada(String nombreRutaReservada) {
 		this.nombreRutaReservada = nombreRutaReservada;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Reserva [nombreReserva=" + nombreReserva + ", lugarOrigen=" + lugarOrigen + ", lugarDestino="
-				+ lugarDestino + ", puestoRutaReservada=" + puestoRutaReservada + ", nombreRutaReservada="
-				+ nombreRutaReservada + ", documentoPasajero=" + documentoPasajero + "]";
+		return "Reserva [nombreReserva=" + nombreReserva + ", puestoRutaReservada=" + puestoRutaReservada
+				+ ", nombreRutaReservada=" + nombreRutaReservada + ", documentoPasajero=" + documentoPasajero + "]";
 	}
+	
+	
 
 }

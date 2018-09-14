@@ -28,7 +28,7 @@ public class Arquitectura {
 		String nombre;
 		String correo;
 		String contrasena;
-		int documento;
+		String documento;
 		int opcion = 0;
 
 		Facade facade = new Facade();
@@ -50,21 +50,21 @@ public class Arquitectura {
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-					documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
+					documento = JOptionPane.showInputDialog("Introducir documento");
 					facade.registrarPasajero(nombre, documento, correo, contrasena);
 					break;
 				case 2:
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-					documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
+					documento = JOptionPane.showInputDialog("Introducir documento");
 					facade.registrarConductor(nombre, documento, correo, contrasena);
 					break;
 				case 3:
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
-					documento = Integer.parseInt(JOptionPane.showInputDialog("Introducir documento"));
+					documento =JOptionPane.showInputDialog("Introducir documento");
 					facade.registrarAdministrador(nombre, documento, correo, contrasena);
 					break;
 				case 4:
@@ -76,7 +76,7 @@ public class Arquitectura {
 				switch (opcion2) {
 				case 1:
 					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
-					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del pasajero a modificar"));
+					documento = JOptionPane.showInputDialog("Introduce el documento del pasajero a modificar");
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
@@ -84,7 +84,7 @@ public class Arquitectura {
 					break;
 				case 2:
 					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
-					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del conductor a modificar"));
+					documento = JOptionPane.showInputDialog("Introduce el documento del conductor a modificar");
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
@@ -92,7 +92,7 @@ public class Arquitectura {
 					break;
 				case 3:
 					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
-					documento = Integer.parseInt(JOptionPane.showInputDialog("Introduce el documento del administrador a modificar"));
+					documento = JOptionPane.showInputDialog("Introduce el documento del administrador a modificar");
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
 					correo = JOptionPane.showInputDialog("Introducir correo");
 					contrasena = JOptionPane.showInputDialog("Introducir contraseña");
@@ -103,7 +103,7 @@ public class Arquitectura {
 				break;
 			case 3:
 				System.out.println(facade.obtenerUsuarios());
-				documento = Integer.parseInt(JOptionPane.showInputDialog(null,"Introduce el documento del usuario a eliminar"));
+				documento = JOptionPane.showInputDialog(null,"Introduce el documento del usuario a eliminar");
 				facade.eliminarUsuario(documento);
 				break;
 			case 4:
@@ -122,12 +122,10 @@ public class Arquitectura {
 					case 1:
 						// Crear registro reserva
 						String nombreReserva = "Reserva " + usuario.hashCode();
-						String lugarOrigen = JOptionPane.showInputDialog("Introducir lugar origen");
-						String lugarDestino = JOptionPane.showInputDialog("Introducir lugar destino");
 						String nombreRutaReservada = JOptionPane
 								.showInputDialog("Introducir nombre de ruta a reservar");
-						String puestoRutaReservada = JOptionPane.showInputDialog("Introducir puesto a reservar");
-						facade.crearRegistroReserva(nombreReserva, lugarOrigen, lugarDestino, nombreRutaReservada,
+						int puestoRutaReservada = Integer.parseInt(JOptionPane.showInputDialog("Introducir puesto a reservar"));
+						facade.crearRegistroReserva(nombreReserva, nombreRutaReservada,
 								puestoRutaReservada, usuario.getDocumento());
 						
 						break;
@@ -146,11 +144,9 @@ public class Arquitectura {
 						String lugarDestinoModificado = JOptionPane.showInputDialog("Introducir lugar destino");
 						String nombreRutaReservadaModificado = JOptionPane
 								.showInputDialog("Introducir nombre de ruta a reservar");
-						String puestoRutaReservadaModificado = JOptionPane
-								.showInputDialog("Introducir puesto a reservar");
+						int puestoRutaReservadaModificado = Integer.parseInt(JOptionPane.showInputDialog("Introducir puesto a reservar"));
 						
-						facade.modificarReservaPasajero(nombreReservaModificar, lugarOrigenModificado,
-								lugarDestinoModificado, nombreRutaReservadaModificado, puestoRutaReservadaModificado,
+						facade.modificarReservaPasajero(nombreReservaModificar,nombreRutaReservadaModificado, puestoRutaReservadaModificado,
 								usuario.getDocumento());
 						break;
 					case 4:
