@@ -1,6 +1,11 @@
 package decorator;
 
 public abstract class PagosPSE implements Component{
+	protected Component pagoEspecial;
+	public PagosPSE(Component pagoEspecial) {
+		this.pagoEspecial = pagoEspecial;
+	}
+	
 	
 	@Override
 	public void establecerParametro(String parametros) {
