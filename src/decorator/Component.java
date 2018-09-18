@@ -1,6 +1,6 @@
 package decorator;
 
 public interface Component {
-	public void establecerParametro(String parametros);
+	public void establecerParametros(String parametros);
 	public String obtenerParametros();
 }
