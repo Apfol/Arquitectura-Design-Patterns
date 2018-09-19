@@ -184,6 +184,7 @@ public class Arquitectura {
 								break;
 							case 2:
 								// Pago por tarjeta
+								//TODO Robinson
 								break;
 							}
 							break;
