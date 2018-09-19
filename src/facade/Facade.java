@@ -1,14 +1,18 @@
-package principal;
+package facade;
 
 import java.util.ArrayList;
 
 import adapter.*;
 import composite.*;
+import decorator.Component;
+import decorator.Pago;
+import decorator.PagosPSEBanco;
 
 public class Facade {
 	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private static ArrayList<Ruta> rutas = new ArrayList<Ruta>();
 	private static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	private static ArrayList<Component> pagos = new ArrayList<Component>();
 
 	/*
 	 * Metodo que retorna el tipo de usuario.
@@ -20,6 +24,7 @@ public class Facade {
 			if (us.getCorreo().equals(correo) && us.getContrasena().equals(pass)) {
 				// index = usuarios.indexOf(us);
 				tipoPasajero = obtenerTipo(us);
+				break;
 			} else {
 				tipoPasajero = 0;
 			}
@@ -200,6 +205,20 @@ public class Facade {
 			}
 			position++;
 		}
+	}
+
+	public void registrarPago(String parametros) {
+		Component component = new PagosPSEBanco(new Pago());
+		component.establecerParametros(parametros);
+		pagos.add(component);
+	}
+	
+	public String obtenerPagos() {
+		String valoresPagos = "";
+		for(Component pago: pagos) {
+			valoresPagos += pago.obtenerParametros() +"\n";
+		}
+		return valoresPagos;
 	}
 	
 	public void usuariosDummy() {

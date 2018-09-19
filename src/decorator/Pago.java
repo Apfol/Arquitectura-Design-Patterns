@@ -7,12 +7,12 @@ public class Pago implements Component{
 	public String documentoPasajero;
 	
 
-	@Override
+	
 	public void establecerParametros(String parametros) {
 		String[] parametrosBanco = parametros.split(",");
-		setValor(parametrosBanco[1]);
-		setDocumentoConductor(parametrosBanco[2]);
-		setDocumentoPasajero(parametrosBanco[3]);
+		setValor(parametrosBanco[0]);
+		setDocumentoConductor(parametrosBanco[1]);
+		setDocumentoPasajero(parametrosBanco[2]);
 	}
 
 	@Override

@@ -11,17 +11,19 @@ public class PagosPSEBanco extends PagosPSE{
 	}
 
 	
-	@Override
+	
 	public void establecerParametros(String parametros) {
+		pagoEspecial.establecerParametros(parametros);
 		String[] parametrosBanco = parametros.split(",");
-		setNumeroCuenta(parametrosBanco[0]);
-		setPassCuenta(parametrosBanco[1]);
-		super.setConfirmacionPago(Boolean.parseBoolean(parametrosBanco[2]));
+		setNumeroCuenta(parametrosBanco[3]);
+		setPassCuenta(parametrosBanco[4]);
+		super.setConfirmacionPago(Boolean.parseBoolean(parametrosBanco[5]));
 	}
 	
 	@Override
 	public String obtenerParametros() {
-		return pagoEspecial.obtenerParametros() + " + Número de cuenta: " + getNumeroCuenta() + ". " + getPassCuenta();
+		return pagoEspecial.obtenerParametros() + " + Número de cuenta: " + getNumeroCuenta() + ". Contraseña de cuenta:" +getPassCuenta()
+		+ ". Confirmación de pago: " + super.isConfirmacionPago();
 	}
 
 
