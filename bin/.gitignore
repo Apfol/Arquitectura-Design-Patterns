@@ -1,3 +1,5 @@
-/facade/
+/adapter/
+/composite/
 /decorator/
+/facade/
 /principal/

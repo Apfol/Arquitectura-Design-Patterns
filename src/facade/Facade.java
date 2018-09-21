@@ -175,7 +175,10 @@ public class Facade {
 	public void eliminarUsuario(String documento) {
 		for(Usuario us: usuarios) {
 			if(us.getDocumento().equals(documento)) {
+				System.out.println("Antes "+ usuarios.size());
 				usuarios.remove(us);
+				System.out.println("Despues "+ usuarios.size());
+				break;
 			}
 		}
 	}
