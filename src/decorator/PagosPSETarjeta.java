@@ -27,13 +27,13 @@ public class PagosPSETarjeta extends PagosPSE
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		super.setConfirmacionPago(Boolean.parseBoolean(params[6]));
+		super.establecerParametros(params[6]);
 	}
 	
 	public String obtenerParametros()
 	{
-		return pagoEspecial.obtenerParametros() + ". Número de tarjeta: "+this.numeroTarjeta+" . Codigo seguridad: "+ this.codigoSeguridad
-				+" . Fecha vencimiento: "+this.fechaVencimiento+ " . Confimación de pago: "+ super.isConfirmacionPago();
+		return ". Número de tarjeta: "+this.numeroTarjeta+" . Codigo seguridad: "+ this.codigoSeguridad
+				+" . Fecha vencimiento: "+this.fechaVencimiento ;
 	}
 	
 	public String getNumeroTarjeta() {
