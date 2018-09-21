@@ -32,7 +32,7 @@ public class PagosPSETarjeta extends PagosPSE
 	
 	public String obtenerParametros()
 	{
-		return ". Número de tarjeta: "+this.numeroTarjeta+" . Codigo seguridad: "+ this.codigoSeguridad
+		return super.obtenerParametros() + ". Número de tarjeta: "+this.numeroTarjeta+" . Codigo seguridad: "+ this.codigoSeguridad
 				+" . Fecha vencimiento: "+this.fechaVencimiento ;
 	}
 	

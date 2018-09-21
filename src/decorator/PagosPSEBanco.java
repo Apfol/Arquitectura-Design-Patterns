@@ -22,7 +22,7 @@ public class PagosPSEBanco extends PagosPSE{
 	
 	@Override
 	public String obtenerParametros() {
-		return ". Número de cuenta: " + getNumeroCuenta() + ". Contraseña de cuenta:" +getPassCuenta();
+		return super.obtenerParametros() +". Número de cuenta: " + getNumeroCuenta() + ". Contraseña de cuenta:" +getPassCuenta();
 	}
 
 
