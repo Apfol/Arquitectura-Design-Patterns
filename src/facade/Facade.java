@@ -7,7 +7,6 @@ import composite.*;
 import decorator.Component;
 import decorator.Pago;
 import decorator.PagosPSEBanco;
-import decorator.PagosPSETarjeta;
 
 public class Facade {
 	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
@@ -213,14 +212,6 @@ public class Facade {
 		component.establecerParametros(parametros);
 		pagos.add(component);
 	}
-	
-	public void registrarPagoTarjeta(String parametros) {
-		Component component = new PagosPSETarjeta(new Pago());
-		component.establecerParametros(parametros);
-		pagos.add(component);
-	}
-	
-	
 	
 	public String obtenerPagos() {
 		String valoresPagos = "";

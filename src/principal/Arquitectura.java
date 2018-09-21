@@ -185,20 +185,6 @@ public class Arquitectura {
 							case 2:
 								// Pago por tarjeta
 								//TODO Robinson
-								parametrosPago += "," + JOptionPane.showInputDialog(null, "Introduce el numero de tarjeta.");
-								parametrosPago += "," + JOptionPane.showInputDialog(null, "Introduce el codigo de seguridad");
-								parametrosPago += "," + JOptionPane.showInputDialog(null, "Introduce la fecha de vencimiento (yyyy/MM/dd)");
-								
-								
-								//parametrosPago += (JOptionPane.showConfirmDialog(null, "¿ Realizar Pago ?") == JOptionPane.YES_OPTION ? ",True": ",False");
-								if(JOptionPane.showConfirmDialog(null, "¿ Realizar Pago ?") == JOptionPane.YES_OPTION)
-								{
-									parametrosPago += ",True";
-								}else
-								{
-									parametrosPago += ",False";
-								}
-								facade.registrarPagoTarjeta(parametrosPago);
 								break;
 							}
 							break;
