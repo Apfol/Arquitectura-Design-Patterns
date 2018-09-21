@@ -96,6 +96,7 @@ public class Facade {
 			if(rut.getNombre().equals(nombreRuta) && rut.getDocumentoConductor().equals(documentoConductor)) {
 				System.out.println(rut);
 				rutas.remove(rut);
+				break;
 			}
 		}
 		System.out.println("Desoues"+rutas.size());
