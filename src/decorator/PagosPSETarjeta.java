@@ -30,6 +30,7 @@ public class PagosPSETarjeta extends PagosPSE
 		super.establecerParametros(params[6]);
 	}
 	
+	//
 	public String obtenerParametros()
 	{
 		return super.obtenerParametros() + ". Número de tarjeta: "+this.numeroTarjeta+" . Codigo seguridad: "+ this.codigoSeguridad
