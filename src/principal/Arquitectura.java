@@ -12,9 +12,6 @@ import javax.swing.JOptionPane;
 import adapter.Usuario;
 import composite.Calle;
 import composite.Componente;
-import decorator.Component;
-import decorator.Pago;
-import decorator.PagosPSEBanco;
 import facade.Facade;
 
 /**
