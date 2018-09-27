@@ -13,17 +13,29 @@ import proxy.FacadeProxy;
 import proxy.IFacade;
 import proxy.UsuarioLogin;
 
-public class Facade implements IFacade{
+public class Facade implements IFacade {
+
 	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private static ArrayList<Ruta> rutas = new ArrayList<Ruta>();
 	private static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private static ArrayList<Component> pagos = new ArrayList<Component>();
 	public static Hashtable<String, String> documentosSesion = new Hashtable<String, String>();
+	private static Facade mFacade;
+
+	private Facade() {
+	}
+
+	public static Facade getFacadeInstance() {
+		if (mFacade == null) {
+			mFacade = new Facade();
+		}
+		return mFacade;
+	}
 
 	/*
-	 * Metodo que retorna el tipo de usuario.
-	 *  Retorna 0 si no existe, 1 si es pasajero y dos si es conductor
-	*/
+	 * Metodo que retorna el tipo de usuario. Retorna 0 si no existe, 1 si es
+	 * pasajero y dos si es conductor
+	 */
 	public int verificarUsuario(String correo, String pass) {
 		int tipoPasajero = 0;
 		for (Usuario us : usuarios) {
@@ -47,7 +59,7 @@ public class Facade implements IFacade{
 		}
 		return tipoUsu;
 	}
-		
+
 	public Usuario obtenerUsuario(String correo, String pass) {
 		for (Usuario us : usuarios) {
 			if (us.getCorreo().equals(correo) && us.getContrasena().equals(pass)) {
@@ -56,10 +68,10 @@ public class Facade implements IFacade{
 		}
 		return null;
 	}
-	
+
 	public String obtenerUsuarios() {
 		String info = "";
-		for(Usuario us: usuarios) {
+		for (Usuario us : usuarios) {
 			info += us.toString() + "\n";
 		}
 		return info;
@@ -71,22 +83,23 @@ public class Facade implements IFacade{
 		rutas.add(ruta);
 	}
 
-	//Robinson
+	// Robinson
 	public String listarRutasConductor(String documento) {
-		String infoRutas = "No se encontraron las rutas para el documento "+ documento;
+		String infoRutas = "No se encontraron las rutas para el documento " + documento;
 		String info = "";
-		for(int i=0; i < rutas.size(); i++) {
-			if(rutas.get(i).getDocumentoConductor().equals(documento)) {
-				info += (i++) + rutas.get(i).obtenerDatos()+"\n\n";
+		for (int i = 0; i < rutas.size(); i++) {
+			if (rutas.get(i).getDocumentoConductor().equals(documento)) {
+				info += (i++) + rutas.get(i).obtenerDatos() + "\n\n";
 			}
 		}
-		return (info.isEmpty() ? infoRutas: info);
+		return (info.isEmpty() ? infoRutas : info);
 	}
 
-	public void actualizarRuta(String nombreRutaModificar, String nombreRutaNuevo, ArrayList<Componente> callesModificadas, String documentoConductor) {
+	public void actualizarRuta(String nombreRutaModificar, String nombreRutaNuevo,
+			ArrayList<Componente> callesModificadas, String documentoConductor) {
 		int position = 0;
-		for(Ruta ru: rutas) {
-			if(ru.getNombre().equals(nombreRutaModificar)) {
+		for (Ruta ru : rutas) {
+			if (ru.getNombre().equals(nombreRutaModificar)) {
 				Ruta rutaNueva = new Ruta(nombreRutaNuevo, documentoConductor);
 				rutaNueva.setComponentes(callesModificadas);
 				rutas.set(position, rutaNueva);
@@ -96,68 +109,70 @@ public class Facade implements IFacade{
 	}
 
 	public void eliminarRuta(String nombreRuta, String documentoConductor) {
-		System.out.println("antes"+rutas.size());
-		for(Ruta rut: rutas) {
-			if(rut.getNombre().equals(nombreRuta) && rut.getDocumentoConductor().equals(documentoConductor)) {
+		System.out.println("antes" + rutas.size());
+		for (Ruta rut : rutas) {
+			if (rut.getNombre().equals(nombreRuta) && rut.getDocumentoConductor().equals(documentoConductor)) {
 				System.out.println(rut);
 				rutas.remove(rut);
 				break;
 			}
 		}
-		System.out.println("Desoues"+rutas.size());
-		
+		System.out.println("Desoues" + rutas.size());
+
 	}
 
-	//Robinson el nombre de la ruta es la relacion TOca cambiarla creo
-	public void crearRegistroReserva(String nombreReserva, String nombreRutaReservada, int puestoRutaReservada, String documentoPasajero) {
+	// Robinson el nombre de la ruta es la relacion TOca cambiarla creo
+	public void crearRegistroReserva(String nombreReserva, String nombreRutaReservada, int puestoRutaReservada,
+			String documentoPasajero) {
 		Reserva reserv = new Reserva(nombreReserva, puestoRutaReservada, nombreRutaReservada, documentoPasajero);
 		reservas.add(reserv);
-		System.out.println("Reserva añadida"+reserv.toString());
+		System.out.println("Reserva añadida" + reserv.toString());
 	}
 
 	public String listarReservasPasajero(String documentoPasajero) {
 		String lista = "";
-		for(Reserva re: reservas) {
-			if(re.getDocumentoPasajero().equals(documentoPasajero) ) {
-				lista += "Nombre reserva: " + re.getNombreReserva() 
-					+  "Nombre ruta reservada: " +re.getNombreRutaReservada()
-					+ " \tPuesto reservado: " + re.getPuestoAReservar();
+		for (Reserva re : reservas) {
+			if (re.getDocumentoPasajero().equals(documentoPasajero)) {
+				lista += "Nombre reserva: " + re.getNombreReserva() + "Nombre ruta reservada: "
+						+ re.getNombreRutaReservada() + " \tPuesto reservado: " + re.getPuestoAReservar();
 			}
 		}
 		return lista;
 	}
-	
+
 	public String listarReservasPas(String documentoPasajero) {
-		String lista = "No se encontraron reservas para el pasajero "+documentoPasajero;
+		String lista = "No se encontraron reservas para el pasajero " + documentoPasajero;
 		String infoRes = "";
-		for(int i=0; i < reservas.size(); i++) {
-			if(reservas.get(i).getDocumentoPasajero().equals(documentoPasajero)) {
-				infoRes += (i++)+reservas.get(i).toString() + "\n";
+		for (int i = 0; i < reservas.size(); i++) {
+			if (reservas.get(i).getDocumentoPasajero().equals(documentoPasajero)) {
+				infoRes += (i++) + reservas.get(i).toString() + "\n";
 			}
 		}
-		return (infoRes.isEmpty() ? lista: infoRes);
+		return (infoRes.isEmpty() ? lista : infoRes);
 	}
 
-	//Robinson
+	// Robinson
 	public void modificarReservaPasajero(String nombreReservaModificar, String nombreRutaReservadaModificado,
-											int puestoRutaReservadaModificado, String documentoPasajero) {
-		//NO SE DEBE MODIFICAR NOMBRE DE RESERVA
-		for(Reserva res: reservas) {
-			
-			if(res.getNombreReserva().equals(nombreReservaModificar) && res.getDocumentoPasajero().equals(documentoPasajero)) {
-				System.out.println("Antes de modificar "+res.toString());
-				res.setNombreRutaReservada((nombreRutaReservadaModificado.isEmpty() ? res.getNombreRutaReservada() : nombreRutaReservadaModificado));
+			int puestoRutaReservadaModificado, String documentoPasajero) {
+		// NO SE DEBE MODIFICAR NOMBRE DE RESERVA
+		for (Reserva res : reservas) {
+
+			if (res.getNombreReserva().equals(nombreReservaModificar)
+					&& res.getDocumentoPasajero().equals(documentoPasajero)) {
+				System.out.println("Antes de modificar " + res.toString());
+				res.setNombreRutaReservada((nombreRutaReservadaModificado.isEmpty() ? res.getNombreRutaReservada()
+						: nombreRutaReservadaModificado));
 				res.setPuestoAReservar(puestoRutaReservadaModificado);
-				//res.setDocumentoPasajero((documentoPasajero));
-				System.out.println("nueva"+ res.toString());
+				// res.setDocumentoPasajero((documentoPasajero));
+				System.out.println("nueva" + res.toString());
 			}
 		}
-		
+
 	}
 
 	public void eliminarReserva(String nombreReservaEliminar, String documentoPasajero) {
-		for(Reserva re: reservas) {
-			if(re.getDocumentoPasajero().equals(documentoPasajero) && re.getNombreReserva() == nombreReservaEliminar) {
+		for (Reserva re : reservas) {
+			if (re.getDocumentoPasajero().equals(documentoPasajero) && re.getNombreReserva() == nombreReservaEliminar) {
 				reservas.remove(re);
 				break;
 			}
@@ -170,8 +185,8 @@ public class Facade implements IFacade{
 
 	public void modificarPasajero(String nombre, String documento, String correo, String contrasena) {
 		int position = 0;
-		for(Usuario us: usuarios) {
-			if(us.getDocumento().equals(documento)) {
+		for (Usuario us : usuarios) {
+			if (us.getDocumento().equals(documento)) {
 				usuarios.set(position, new Pasajero(nombre, correo, contrasena, documento));
 			}
 			position++;
@@ -179,38 +194,38 @@ public class Facade implements IFacade{
 	}
 
 	public void eliminarUsuario(String documento) {
-		for(Usuario us: usuarios) {
-			if(us.getDocumento().equals(documento)) {
-				System.out.println("Antes "+ usuarios.size());
+		for (Usuario us : usuarios) {
+			if (us.getDocumento().equals(documento)) {
+				System.out.println("Antes " + usuarios.size());
 				usuarios.remove(us);
-				System.out.println("Despues "+ usuarios.size());
+				System.out.println("Despues " + usuarios.size());
 				break;
 			}
 		}
 	}
-	
+
 	public void registrarConductor(String nombre, String documento, String correo, String contrasena) {
 		usuarios.add(new Conductor(nombre, correo, contrasena, documento));
 	}
 
 	public void modificarConductor(String nombre, String documento, String correo, String contrasena) {
 		int position = 0;
-		for(Usuario us: usuarios) {
-			if(us.getDocumento().equals(documento)) {
+		for (Usuario us : usuarios) {
+			if (us.getDocumento().equals(documento)) {
 				usuarios.set(position, new Conductor(nombre, correo, contrasena, documento));
 			}
 			position++;
 		}
 	}
-	
+
 	public void registrarAdministrador(String nombre, String documento, String correo, String contrasena) {
 		usuarios.add(new AdministradorAdapter(nombre, correo, contrasena, documento));
 	}
 
 	public void modificarAdministrador(String nombre, String documento, String correo, String contrasena) {
 		int position = 0;
-		for(Usuario us: usuarios) {
-			if(us.getDocumento().equals(documento)) {
+		for (Usuario us : usuarios) {
+			if (us.getDocumento().equals(documento)) {
 				usuarios.set(position, new AdministradorAdapter(nombre, correo, contrasena, documento));
 			}
 			position++;
@@ -222,23 +237,21 @@ public class Facade implements IFacade{
 		component.establecerParametros(parametros);
 		pagos.add(component);
 	}
-	
+
 	public void registrarPagoTarjeta(String parametros) {
 		Component component = new PagosPSETarjeta(new Pago());
 		component.establecerParametros(parametros);
 		pagos.add(component);
 	}
-	
-	
-	
+
 	public String obtenerPagos() {
 		String valoresPagos = "";
-		for(Component pago: pagos) {
-			valoresPagos += pago.obtenerParametros() +"\n";
+		for (Component pago : pagos) {
+			valoresPagos += pago.obtenerParametros() + "\n";
 		}
 		return valoresPagos;
 	}
-	
+
 	public void usuariosDummy() {
 		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", "1073525507"));
 		FacadeProxy.getUsuarios().add(new UsuarioLogin("jairolo@unisabana.edu.co", "jario123", "Conductor"));
@@ -251,32 +264,32 @@ public class Facade implements IFacade{
 		usuarios.add(new AdministradorAdapter("Jaime Contreras", "jaimeco@unisabana.edu.co", "jaime123", "106435678"));
 		FacadeProxy.getUsuarios().add(new UsuarioLogin("jaimeco@unisabana.edu.co", "jaime123", "AdministradorAdapter"));
 	}
-	
+
 	public void rutasDummy() {
 		Componente c1 = new Calle("12.09.54", "14.23.64", "34.13.74", "345.26.42.5", "Calle 9", "9 mts");
-        Componente c2 = new Calle("34.25.1", "64.26.32.6", "32.75.47", "36.32.1345", "Calle 57", "14 mts");
-        Componente c3 = new Calle("52.63.7.2", "54.2.67.2", "3245.2.6.3", "32.1.5.3", "Calle 91", "16 mts");
-        
-        //Rutas de Jairo
-        Ruta ruta1 = new Ruta("Ruta 1","1073525507");
-        Ruta ruta2 = new Ruta("Ruta 2","1073525507");
-        //Rutas de Sara
-        Ruta ruta3 = new Ruta("Ruta 3","1045676829");
-      
-        ruta1.add(c1);
-        ruta2.add(c2);
-        ruta3.add(c3);
-        
-        rutas.add(ruta1);
-        rutas.add(ruta2);
-        rutas.add(ruta3);
+		Componente c2 = new Calle("34.25.1", "64.26.32.6", "32.75.47", "36.32.1345", "Calle 57", "14 mts");
+		Componente c3 = new Calle("52.63.7.2", "54.2.67.2", "3245.2.6.3", "32.1.5.3", "Calle 91", "16 mts");
+
+		// Rutas de Jairo
+		Ruta ruta1 = new Ruta("Ruta 1", "1073525507");
+		Ruta ruta2 = new Ruta("Ruta 2", "1073525507");
+		// Rutas de Sara
+		Ruta ruta3 = new Ruta("Ruta 3", "1045676829");
+
+		ruta1.add(c1);
+		ruta2.add(c2);
+		ruta3.add(c3);
+
+		rutas.add(ruta1);
+		rutas.add(ruta2);
+		rutas.add(ruta3);
 	}
-	
+
 	public void reservasDummy() {
-		//Reserva de Ana
+		// Reserva de Ana
 		reservas.add(new Reserva("Reserva 124738", 1, "Ruta 1", "1234567889"));
-		//Reserva de Juan
-		reservas.add(new Reserva("Reserva 5243446",3, "Ruta 3", "216654382"));
+		// Reserva de Juan
+		reservas.add(new Reserva("Reserva 5243446", 3, "Ruta 3", "216654382"));
 	}
 
 	@Override

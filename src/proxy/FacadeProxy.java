@@ -25,7 +25,7 @@ public class FacadeProxy implements IFacade {
 		
 		for(UsuarioLogin usLogin: usuarios) {
 			if (correo.equals(usLogin.getCorreo()) && password.equals(usLogin.getPassword())) {
-				facade = new Facade();
+				facade = Facade.getFacadeInstance();
 				return facade.realizarOperaciones(usLogin.getCorreo(), usLogin.getPassword(), usLogin.getTipoInstancia());
 			}
 		}

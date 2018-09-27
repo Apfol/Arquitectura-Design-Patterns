@@ -33,7 +33,7 @@ public class Arquitectura {
 		String documento;
 		int opcion = 0;
 
-		Facade facade = new Facade();
+		Facade facade = Facade.getFacadeInstance();
 		// LLenado de arreglos
 		facade.usuariosDummy();
 		facade.rutasDummy();
