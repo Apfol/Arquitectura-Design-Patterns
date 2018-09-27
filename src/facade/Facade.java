@@ -1,6 +1,7 @@
 package facade;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import adapter.*;
 import composite.*;
@@ -8,12 +9,16 @@ import decorator.Component;
 import decorator.Pago;
 import decorator.PagosPSEBanco;
 import decorator.PagosPSETarjeta;
+import proxy.FacadeProxy;
+import proxy.IFacade;
+import proxy.UsuarioLogin;
 
-public class Facade {
+public class Facade implements IFacade{
 	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private static ArrayList<Ruta> rutas = new ArrayList<Ruta>();
 	private static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private static ArrayList<Component> pagos = new ArrayList<Component>();
+	public static Hashtable<String, String> documentosSesion = new Hashtable<String, String>();
 
 	/*
 	 * Metodo que retorna el tipo de usuario.
@@ -236,10 +241,15 @@ public class Facade {
 	
 	public void usuariosDummy() {
 		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", "1073525507"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("jairolo@unisabana.edu.co", "jario123", "Conductor"));
 		usuarios.add(new Conductor("Sara Bustos", "sarabu@unisabana.edu.co", "sara123", "1045676829"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("sarabu@unisabana.edu.co", "sara123", "Conductor"));
 		usuarios.add(new Pasajero("Ana Garcia", "anaga@unisabana.edu.co", "ana123", "1234567889"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("anaga@unisabana.edu.co", "ana123", "Pasajero"));
 		usuarios.add(new Pasajero("Juan Correa", "juanco@unisabana.edu.co", "juan123", "216654382"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("juanco@unisabana.edu.co", "juan123", "Pasajero"));
 		usuarios.add(new AdministradorAdapter("Jaime Contreras", "jaimeco@unisabana.edu.co", "jaime123", "106435678"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("jaimeco@unisabana.edu.co", "jaime123", "AdministradorAdapter"));
 	}
 	
 	public void rutasDummy() {
@@ -268,6 +278,11 @@ public class Facade {
 		//Reserva de Juan
 		reservas.add(new Reserva("Reserva 5243446",3, "Ruta 3", "216654382"));
 	}
-	
+
+	@Override
+	public String realizarOperaciones(String correo, String password, String tipoInstancia) {
+		documentosSesion.put(correo, tipoInstancia);
+		return correo;
+	}
 
 }
