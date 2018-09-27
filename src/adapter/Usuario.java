@@ -4,13 +4,9 @@
  * and open the template in the editor.
  */
 package adapter;
+import fly_weight.IFlyWeight;
 
-
-/**
- *
- * @author Andrés
- */
-public abstract class Usuario {
+public abstract class Usuario implements IFlyWeight{
 
     private String nombre;
     private String correo;
