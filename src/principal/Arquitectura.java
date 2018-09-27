@@ -39,7 +39,7 @@ public class Arquitectura {
 		facade.rutasDummy();
 		facade.reservasDummy();
 
-		FacadeProxy facadeProxy = new FacadeProxy();
+		FacadeProxy facadeProxy = FacadeProxy.getFacadeProxyInstance();
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(

@@ -5,9 +5,19 @@ import java.util.ArrayList;
 import facade.Facade;
 
 public class FacadeProxy implements IFacade {
-
-	Facade facade;
-	static ArrayList<UsuarioLogin> usuarios = new ArrayList<UsuarioLogin>();
+	
+	private static FacadeProxy mFacadeProxy;
+	private Facade facade;
+	public static ArrayList<UsuarioLogin> usuarios = new ArrayList<UsuarioLogin>();
+	
+	private FacadeProxy() {}
+	
+	public static FacadeProxy getFacadeProxyInstance() {
+		if(mFacadeProxy == null) {
+			mFacadeProxy = new FacadeProxy();
+		}
+		return mFacadeProxy;
+	}
 
 
 	@Override
