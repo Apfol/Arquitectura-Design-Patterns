@@ -19,7 +19,7 @@ public class FacadeProxy implements IFacade {
 				return facade.realizarOperaciones(usLogin.getCorreo(), usLogin.getPassword(), usLogin.getTipoInstancia());
 			}
 		}
-		return null;
+		return "Acceso no permitido";
 	}
 
 

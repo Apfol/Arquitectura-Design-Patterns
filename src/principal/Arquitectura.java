@@ -116,9 +116,13 @@ public class Arquitectura {
 			case 4:
 				correo = JOptionPane.showInputDialog("Introducir correo");
 				password = JOptionPane.showInputDialog("Introducir password");
-				if (Facade.documentosSesion.containsKey(facadeProxy.realizarOperaciones(correo, password, null))) {
+				//obtener key del usuario que desea acceder al sistema
+				String keyLogin = facadeProxy.realizarOperaciones(correo, password, null);
+				//Comprobar si la key está en el HashTable guardado en Facade
+				if (Facade.documentosSesion.containsKey(keyLogin)) {
 					Usuario usuario = facade.obtenerUsuario(correo, password);
-					switch (Facade.documentosSesion.get(facadeProxy.realizarOperaciones(correo, password, null))) {
+					//Obtener valor guardado con la key
+					switch (Facade.documentosSesion.get(keyLogin)) {
 					case "Pasajero":
 						// Pasajero
 						do {
@@ -308,6 +312,9 @@ public class Arquitectura {
 					case "AdministradorAdapter":
 						break;
 					}
+				} else {
+					//Mostrar mensaje en el caso que la key no está en el HashTable
+					JOptionPane.showMessageDialog(null, keyLogin);
 				}
 				break;
 			}
