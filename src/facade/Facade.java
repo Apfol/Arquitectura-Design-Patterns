@@ -12,6 +12,7 @@ import decorator.PagosPSETarjeta;
 import proxy.FacadeProxy;
 import proxy.IFacade;
 import proxy.UsuarioLogin;
+import fly_weight.*;
 
 public class Facade implements IFacade {
 
@@ -21,6 +22,12 @@ public class Facade implements IFacade {
 	private static ArrayList<Component> pagos = new ArrayList<Component>();
 	public static Hashtable<String, String> documentosSesion = new Hashtable<String, String>();
 	private static Facade mFacade;
+	private static FlyWeightFactory fabricaUsers = FlyWeightFactory.getFlyWeightInstance();
+	
+	
+	public static ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
 
 	private Facade() {
 	}
@@ -180,7 +187,10 @@ public class Facade implements IFacade {
 	}
 
 	public void registrarPasajero(String nombre, String documento, String correo, String contrasena) {
-		usuarios.add(new Pasajero(nombre, correo, contrasena, documento));
+		Pasajero pasa= new Pasajero(nombre, correo, contrasena, documento);
+		usuarios.add(pasa);
+		fabricaUsers.añadirUsuario(pasa);
+		//usuarios.add(new Pasajero(nombre, correo, contrasena, documento));
 	}
 
 	public void modificarPasajero(String nombre, String documento, String correo, String contrasena) {
@@ -198,6 +208,7 @@ public class Facade implements IFacade {
 			if (us.getDocumento().equals(documento)) {
 				System.out.println("Antes " + usuarios.size());
 				usuarios.remove(us);
+				fabricaUsers.eliminarUs(documento);
 				System.out.println("Despues " + usuarios.size());
 				break;
 			}
@@ -205,7 +216,10 @@ public class Facade implements IFacade {
 	}
 
 	public void registrarConductor(String nombre, String documento, String correo, String contrasena) {
-		usuarios.add(new Conductor(nombre, correo, contrasena, documento));
+		Conductor cond = new Conductor(nombre, correo, contrasena, documento);
+		fabricaUsers.añadirUsuario(cond);
+		usuarios.add(cond);
+		//usuarios.add(new Conductor(nombre, correo, contrasena, documento));
 	}
 
 	public void modificarConductor(String nombre, String documento, String correo, String contrasena) {
@@ -219,7 +233,10 @@ public class Facade implements IFacade {
 	}
 
 	public void registrarAdministrador(String nombre, String documento, String correo, String contrasena) {
-		usuarios.add(new AdministradorAdapter(nombre, correo, contrasena, documento));
+		AdministradorAdapter admin = new AdministradorAdapter(nombre, correo, contrasena, documento);
+		fabricaUsers.añadirUsuario(admin);
+		usuarios.add(admin);
+		//usuarios.add(new AdministradorAdapter(nombre, correo, contrasena, documento));
 	}
 
 	public void modificarAdministrador(String nombre, String documento, String correo, String contrasena) {

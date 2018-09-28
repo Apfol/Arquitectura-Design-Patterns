@@ -13,6 +13,7 @@ import adapter.Usuario;
 import composite.Calle;
 import composite.Componente;
 import facade.Facade;
+import fly_weight.FlyWeightFactory;
 import proxy.FacadeProxy;
 import proxy.UsuarioLogin;
 
@@ -40,12 +41,18 @@ public class Arquitectura {
 		facade.reservasDummy();
 
 		FacadeProxy facadeProxy = FacadeProxy.getFacadeProxyInstance();
+		FlyWeightFactory fabricaUs = FlyWeightFactory.getFlyWeightInstance();
+		fabricaUs.cargarUsuarios();
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
 					"" + "Seleccione la opción: \n" + "1. Registrar usuario \n" + "2. Modificar usuario \n"
-							+ "3. Eliminar usuario \n" + "4. Acceder al sistema \n" + "0. Salir"));
+							+ "3. Eliminar usuario \n" + "4. Acceder al sistema \n" + "5. Mostrar usuarios \n" + "0. Salir"));
 			switch (opcion) {
+			case 5:
+				System.out.println(fabricaUs.mostrarUsuarios());
+				JOptionPane.showMessageDialog(null, fabricaUs.mostrarUsuarios());
+				break;
 			case 1:
 				int opcion1 = Integer.parseInt(JOptionPane.showInputDialog(
 						"" + "1. Pasajero \n" + "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
@@ -57,6 +64,7 @@ public class Arquitectura {
 					documento = JOptionPane.showInputDialog("Introducir documento");
 					facade.registrarPasajero(nombre, documento, correo, password);
 					FacadeProxy.getUsuarios().add(new UsuarioLogin(correo, password, "Pasajero"));
+					
 					break;
 				case 2:
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
