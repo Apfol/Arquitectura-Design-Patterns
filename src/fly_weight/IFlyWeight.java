@@ -15,6 +15,6 @@ public interface IFlyWeight {
 
 	public void setDocumento(String documento);
 	
-	
+	//email
 
 }

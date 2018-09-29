@@ -48,6 +48,7 @@ public class FlyWeightFactory {
 		}
 
 	}
+	
 
 	public void añadirUsuario(IFlyWeight usEspe)
 	{
