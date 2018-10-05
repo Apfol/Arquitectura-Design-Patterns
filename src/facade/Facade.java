@@ -22,7 +22,7 @@ public class Facade implements IFacade {
 	private static ArrayList<Component> pagos = new ArrayList<Component>();
 	public static Hashtable<String, String> documentosSesion = new Hashtable<String, String>();
 	private static Facade mFacade;
-	private static FlyWeightFactory fabricaUsers;
+	private static FlyWeightFactory fabricaUsers = FlyWeightFactory.getFlyWeightInstance();
 	
 	
 	public static ArrayList<Usuario> getUsuarios() {
@@ -35,7 +35,6 @@ public class Facade implements IFacade {
 	public static Facade getFacadeInstance() {
 		if (mFacade == null) {
 			mFacade = new Facade();
-			fabricaUsers = new FlyWeightFactory();
 		}
 		return mFacade;
 	}
