@@ -7,7 +7,6 @@ public class UsuarioLogin {
 	private String tipoInstancia;
 	
 	public UsuarioLogin(String correo, String password, String tipoInstancia) {
-		super();
 		this.correo = correo;
 		this.password = password;
 		this.tipoInstancia = tipoInstancia;
