@@ -41,8 +41,8 @@ public class Arquitectura {
 		facade.reservasDummy();
 
 		FacadeProxy facadeProxy = FacadeProxy.getFacadeProxyInstance();
-		FlyWeightFactory fabricaUs = FlyWeightFactory.getFlyWeightInstance();
-		fabricaUs.cargarUsuarios();
+		//FlyWeightFactory fabricaUs = FlyWeightFactory.getFlyWeightInstance();
+		//fabricaUs.cargarUsuarios();
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
@@ -50,8 +50,8 @@ public class Arquitectura {
 							+ "3. Eliminar usuario \n" + "4. Acceder al sistema \n" + "5. Mostrar usuarios \n" + "0. Salir"));
 			switch (opcion) {
 			case 5:
-				System.out.println(fabricaUs.mostrarUsuarios());
-				JOptionPane.showMessageDialog(null, fabricaUs.mostrarUsuarios());
+//				System.out.println(fabricaUs.mostrarUsuarios());
+//				JOptionPane.showMessageDialog(null, fabricaUs.mostrarUsuarios());
 				break;
 			case 1:
 				int opcion1 = Integer.parseInt(JOptionPane.showInputDialog(

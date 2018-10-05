@@ -12,21 +12,13 @@ import facade.*;
 
 public class FlyWeightFactory {
 	
-	private static FlyWeightFactory fabrica;
 	private HashMap usBasicInf = new HashMap();
-	private static Facade facade;
 	
-	public static FlyWeightFactory getFlyWeightInstance()
-	{
-		if(fabrica == null)
-		{
-			facade = Facade.getFacadeInstance();
-			fabrica = new FlyWeightFactory();
-			//fabrica.cargarUsuarios();
-		}
+	public FlyWeightFactory() {
+		// TODO Auto-generated constructor stub
 		
-		return fabrica;
 	}
+	
 	
 	public void eliminarUs(String documento)
 	{
@@ -41,11 +33,7 @@ public class FlyWeightFactory {
 	}
 	
 	public void cargarUsuarios() {
-		//usBasicInf.clear();
-		for(IFlyWeight flyWeightUs: facade.getUsuarios())
-		{
-			usBasicInf.put(flyWeightUs.getDocumento(), flyWeightUs);
-		}
+		
 
 	}
 	
