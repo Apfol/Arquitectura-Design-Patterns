@@ -16,17 +16,13 @@ public class FlyWeightFactory {
 	private HashMap usBasicInf = new HashMap();
 	private static Facade facade;
 	
-	public static FlyWeightFactory getFlyWeightInstance()
-	{
-		if(fabrica == null)
-		{
-			facade = Facade.getFacadeInstance();
-			fabrica = new FlyWeightFactory();
-			//fabrica.cargarUsuarios();
-		}
-		
-		return fabrica;
+	public FlyWeightFactory() {
+		// TODO Auto-generated constructor stub
+		facade = Facade.getFacadeInstance();
+		this.cargarUsuarios();
 	}
+	
+
 	
 	public void eliminarUs(String documento)
 	{
