@@ -20,7 +20,7 @@ public class Facade implements IFacade {
 	private static ArrayList<Ruta> rutas = new ArrayList<Ruta>();
 	private static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private static ArrayList<Component> pagos = new ArrayList<Component>();
-	public static Hashtable<String, String> documentosSesion = new Hashtable<String, String>();
+	public static Hashtable<Long, String> aleatorios = new Hashtable<Long, String>();
 	private static Facade mFacade;
 	
 	private  FlyWeightFactory fabricaUsers = new FlyWeightFactory();;
@@ -33,11 +33,9 @@ public class Facade implements IFacade {
 	private Facade() {
 	}
 
-	public static Facade getFacadeInstance() {
+	public static Facade getInstance() {
 		if (mFacade == null) {
-			
 			mFacade = new Facade();
-			
 		}
 		return mFacade;
 	}
@@ -70,9 +68,10 @@ public class Facade implements IFacade {
 		return tipoUsu;
 	}
 
-	public Usuario obtenerUsuario(String correo, String pass) {
-		for (Usuario us : usuarios) {
-			if (us.getCorreo().equals(correo) && us.getContrasena().equals(pass)) {
+	public Usuario obtenerUsuario(Long aleatorio) {
+		String correo = aleatorios.get(aleatorio);
+		for(Usuario us: usuarios) {
+			if(us.getCorreo().equals(correo)) {
 				return us;
 			}
 		}
@@ -274,15 +273,15 @@ public class Facade implements IFacade {
 
 	public void usuariosDummy() {
 		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", "1073525507"));
-		FacadeProxy.getUsuarios().add(new UsuarioLogin("jairolo@unisabana.edu.co", "jario123", "Conductor"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("jairolo@unisabana.edu.co", "jario123"));
 		usuarios.add(new Conductor("Sara Bustos", "sarabu@unisabana.edu.co", "sara123", "1045676829"));
-		FacadeProxy.getUsuarios().add(new UsuarioLogin("sarabu@unisabana.edu.co", "sara123", "Conductor"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("sarabu@unisabana.edu.co", "sara123"));
 		usuarios.add(new Pasajero("Ana Garcia", "anaga@unisabana.edu.co", "ana123", "1234567889"));
-		FacadeProxy.getUsuarios().add(new UsuarioLogin("anaga@unisabana.edu.co", "ana123", "Pasajero"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("anaga@unisabana.edu.co", "ana123"));
 		usuarios.add(new Pasajero("Juan Correa", "juanco@unisabana.edu.co", "juan123", "216654382"));
-		FacadeProxy.getUsuarios().add(new UsuarioLogin("juanco@unisabana.edu.co", "juan123", "Pasajero"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("juanco@unisabana.edu.co", "juan123"));
 		usuarios.add(new AdministradorAdapter("Jaime Contreras", "jaimeco@unisabana.edu.co", "jaime123", "106435678"));
-		FacadeProxy.getUsuarios().add(new UsuarioLogin("jaimeco@unisabana.edu.co", "jaime123", "AdministradorAdapter"));
+		FacadeProxy.getUsuarios().add(new UsuarioLogin("jaimeco@unisabana.edu.co", "jaime123"));
 	}
 
 	public void rutasDummy() {
@@ -313,9 +312,14 @@ public class Facade implements IFacade {
 	}
 
 	@Override
-	public String realizarOperaciones(String correo, String password, String tipoInstancia) {
-		documentosSesion.put(correo, tipoInstancia);
-		return correo;
+	public Long realizarOperaciones(String correo, String password) {
+		Long aleatorio = Long.parseLong(String.valueOf(Math.random() * 2E13 + 1));
+		aleatorios.put(aleatorio, correo);
+		return aleatorio;
+	}
+
+	public boolean isSession(Long keyLogin) {
+		return aleatorios.contains(keyLogin) && keyLogin != 0 ? true : false;
 	}
 
 }

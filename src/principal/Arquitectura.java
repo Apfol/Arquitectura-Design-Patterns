@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import adapter.Conductor;
+import adapter.Pasajero;
 import adapter.Usuario;
 import composite.Calle;
 import composite.Componente;
@@ -34,25 +36,29 @@ public class Arquitectura {
 		String documento;
 		int opcion = 0;
 
-		Facade facade = Facade.getFacadeInstance();
+		Facade facade = Facade.getInstance();
 		// LLenado de arreglos
 		facade.usuariosDummy();
 		facade.rutasDummy();
 		facade.reservasDummy();
 
 		FacadeProxy facadeProxy = FacadeProxy.getFacadeProxyInstance();
-		//FlyWeightFactory fabricaUs = FlyWeightFactory.getFlyWeightInstance();
-		//fabricaUs.cargarUsuarios();
+
+		Long aleatorio = null;
+
+		// FlyWeightFactory fabricaUs = FlyWeightFactory.getFlyWeightInstance();
+		// fabricaUs.cargarUsuarios();
 
 		do {
-			opcion = Integer.parseInt(JOptionPane.showInputDialog(
-					"" + "Seleccione la opción: \n" + "1. Registrar usuario \n" + "2. Modificar usuario \n"
-							+ "3. Eliminar usuario \n" + "4. Acceder al sistema \n" + "5. Mostrar usuarios \n" + "0. Salir"));
+			/*
+			 * opcion = Integer.parseInt(JOptionPane.showInputDialog("" +
+			 * "Seleccione la opción: \n" + "1. Registrar usuario \n" +
+			 * "2. Modificar usuario \n" + "3. Eliminar usuario \n" +
+			 * "4. Acceder al sistema \n" + "5. Mostrar usuarios \n" + "0. Salir"));
+			 */
+			opcion = Integer.parseInt(JOptionPane.showInputDialog("" + "Seleccione la opción: \n"
+					+ "1. Registrar usuario \n" + "2. Acceder al sistem \n" + "0. Salir"));
 			switch (opcion) {
-			case 5:
-//				System.out.println(fabricaUs.mostrarUsuarios());
-//				JOptionPane.showMessageDialog(null, fabricaUs.mostrarUsuarios());
-				break;
 			case 1:
 				int opcion1 = Integer.parseInt(JOptionPane.showInputDialog(
 						"" + "1. Pasajero \n" + "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
@@ -63,8 +69,7 @@ public class Arquitectura {
 					password = JOptionPane.showInputDialog("Introducir contraseña");
 					documento = JOptionPane.showInputDialog("Introducir documento");
 					facade.registrarPasajero(nombre, documento, correo, password);
-					FacadeProxy.getUsuarios().add(new UsuarioLogin(correo, password, "Pasajero"));
-					
+					FacadeProxy.getUsuarios().add(new UsuarioLogin(correo, password));
 					break;
 				case 2:
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
@@ -72,7 +77,7 @@ public class Arquitectura {
 					password = JOptionPane.showInputDialog("Introducir contraseña");
 					documento = JOptionPane.showInputDialog("Introducir documento");
 					facade.registrarConductor(nombre, documento, correo, password);
-					FacadeProxy.getUsuarios().add(new UsuarioLogin(correo, password, "Conductor"));
+					FacadeProxy.getUsuarios().add(new UsuarioLogin(correo, password));
 					break;
 				case 3:
 					nombre = JOptionPane.showInputDialog("Introducir nombre");
@@ -80,58 +85,86 @@ public class Arquitectura {
 					password = JOptionPane.showInputDialog("Introducir contraseña");
 					documento = JOptionPane.showInputDialog("Introducir documento");
 					facade.registrarAdministrador(nombre, documento, correo, password);
-					FacadeProxy.getUsuarios().add(new UsuarioLogin(correo, password, "AdministradorAdapter"));
+					FacadeProxy.getUsuarios().add(new UsuarioLogin(correo, password));
 					break;
-				case 4:
-				}
-				break;
-			case 2:
-				int opcion2 = Integer.parseInt(JOptionPane.showInputDialog(
-						"" + "1. Pasajero \n" + "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
-				switch (opcion2) {
-				case 1:
-					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
-					documento = JOptionPane.showInputDialog("Introduce el documento del pasajero a modificar");
-					nombre = JOptionPane.showInputDialog("Introducir nombre");
-					correo = JOptionPane.showInputDialog("Introducir correo");
-					password = JOptionPane.showInputDialog("Introducir contraseña");
-					facade.modificarPasajero(nombre, documento, correo, password);
-					break;
-				case 2:
-					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
-					documento = JOptionPane.showInputDialog("Introduce el documento del conductor a modificar");
-					nombre = JOptionPane.showInputDialog("Introducir nombre");
-					correo = JOptionPane.showInputDialog("Introducir correo");
-					password = JOptionPane.showInputDialog("Introducir contraseña");
-					facade.modificarConductor(nombre, documento, correo, password);
-					break;
-				case 3:
-					JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
-					documento = JOptionPane.showInputDialog("Introduce el documento del administrador a modificar");
-					nombre = JOptionPane.showInputDialog("Introducir nombre");
-					correo = JOptionPane.showInputDialog("Introducir correo");
-					password = JOptionPane.showInputDialog("Introducir contraseña");
-					facade.modificarAdministrador(nombre, documento, correo, password);
-					break;
-				case 4:
 				}
 				break;
 			case 3:
-				System.out.println(facade.obtenerUsuarios());
-				documento = JOptionPane.showInputDialog(null, "Introduce el documento del usuario a eliminar");
-				facade.eliminarUsuario(documento);
+
 				break;
-			case 4:
+			case 2:
 				correo = JOptionPane.showInputDialog("Introducir correo");
 				password = JOptionPane.showInputDialog("Introducir password");
-				//obtener key del usuario que desea acceder al sistema
-				String keyLogin = facadeProxy.realizarOperaciones(correo, password, null);
-				//Comprobar si la key está en el HashTable guardado en Facade
-				if (Facade.documentosSesion.containsKey(keyLogin)) {
-					Usuario usuario = facade.obtenerUsuario(correo, password);
-					//Obtener valor guardado con la key
-					switch (Facade.documentosSesion.get(keyLogin)) {
-					case "Pasajero":
+				
+				aleatorio = facadeProxy.realizarOperaciones(correo, password);
+				Usuario usuario = null;
+				
+				if(aleatorio != null && aleatorio != 0) {
+					JOptionPane.showMessageDialog(null, "Inició de sesión éxitoso");
+					usuario = facade.obtenerUsuario(aleatorio);
+				} else if (aleatorio == 0) {
+					JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+				}
+		
+				opcion = Integer.parseInt(JOptionPane.showInputDialog(
+						"" + "Seleccione la opción: \n" + "1. Modificar usuario \n" + "2. Eliminar usuario \n"
+								+ "3. Mostrar usuarios \n" + "4. Reservas" + "5. Pagos" + "0. Salir"));
+				switch (opcion) {
+				case 1:
+					if (facade.isSession(aleatorio)) {
+						int opcion2 = Integer.parseInt(JOptionPane.showInputDialog(
+								"" + "1. Pasajero \n" + "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
+						switch (opcion2) {
+						case 1:
+							JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
+							documento = JOptionPane.showInputDialog("Introduce el documento del pasajero a modificar");
+							nombre = JOptionPane.showInputDialog("Introducir nombre");
+							correo = JOptionPane.showInputDialog("Introducir correo");
+							password = JOptionPane.showInputDialog("Introducir contraseña");
+							facade.modificarPasajero(nombre, documento, correo, password);
+							break;
+						case 2:
+							JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
+							documento = JOptionPane.showInputDialog("Introduce el documento del conductor a modificar");
+							nombre = JOptionPane.showInputDialog("Introducir nombre");
+							correo = JOptionPane.showInputDialog("Introducir correo");
+							password = JOptionPane.showInputDialog("Introducir contraseña");
+							facade.modificarConductor(nombre, documento, correo, password);
+							break;
+						case 3:
+							JOptionPane.showMessageDialog(null, facade.obtenerUsuarios());
+							documento = JOptionPane
+									.showInputDialog("Introduce el documento del administrador a modificar");
+							nombre = JOptionPane.showInputDialog("Introducir nombre");
+							correo = JOptionPane.showInputDialog("Introducir correo");
+							password = JOptionPane.showInputDialog("Introducir contraseña");
+							facade.modificarAdministrador(nombre, documento, correo, password);
+							break;
+						case 4:
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Aún no has iniciado sesión");
+					}
+					break;
+				case 2:
+					if (facade.isSession(aleatorio)) {
+						System.out.println(facade.obtenerUsuarios());
+						documento = JOptionPane.showInputDialog(null, "Introduce el documento del usuario a eliminar");
+						facade.eliminarUsuario(documento);
+					} else {
+						JOptionPane.showMessageDialog(null, "Aún no has iniciado sesión");
+					}
+					break;
+				case 3:
+					if (facade.isSession(aleatorio)) {
+						// System.out.println(fabricaUs.mostrarUsuarios());
+						// JOptionPane.showMessageDialog(null, fabricaUs.mostrarUsuarios());
+					} else {
+						JOptionPane.showMessageDialog(null, "Aún no has iniciado sesión");
+					}
+					break;
+				case 4:
+					if (usuario instanceof Pasajero && facade.isSession(aleatorio)) {
 						// Pasajero
 						do {
 							opcion = Integer.parseInt(JOptionPane.showInputDialog("" + "1. Crear registro de reserva \n"
@@ -230,9 +263,10 @@ public class Arquitectura {
 								break;
 							}
 						} while (opcion != 0);
-						break;
-
-					case "Conductor":
+					} else {
+						JOptionPane.showMessageDialog(null, "Aún no has iniciado sesión");
+					}
+					if (usuario instanceof Conductor && facade.isSession(aleatorio)) {
 						// Conductor
 						do {
 							opcion = Integer
@@ -316,13 +350,9 @@ public class Arquitectura {
 								break;
 							}
 						} while (opcion != 0);
-						break;
-					case "AdministradorAdapter":
-						break;
+					} else {
+						JOptionPane.showMessageDialog(null, "Aún no has iniciado sesión");
 					}
-				} else {
-					//Mostrar mensaje en el caso que la key no está en el HashTable
-					JOptionPane.showMessageDialog(null, keyLogin);
 				}
 				break;
 			}

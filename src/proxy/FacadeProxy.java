@@ -21,15 +21,14 @@ public class FacadeProxy implements IFacade {
 
 
 	@Override
-	public String realizarOperaciones(String correo, String password, String tipoInstancia) {
-		
+	public Long realizarOperaciones(String correo, String password) {
 		for(UsuarioLogin usLogin: usuarios) {
 			if (correo.equals(usLogin.getCorreo()) && password.equals(usLogin.getPassword())) {
-				facade = Facade.getFacadeInstance();
-				return facade.realizarOperaciones(usLogin.getCorreo(), usLogin.getPassword(), usLogin.getTipoInstancia());
+				facade = Facade.getInstance();
+				return facade.realizarOperaciones(usLogin.getCorreo(), usLogin.getPassword());
 			}
 		}
-		return "Acceso no permitido";
+		return (long) 0;
 	}
 
 
