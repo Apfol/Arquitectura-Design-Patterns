@@ -10,7 +10,7 @@ public abstract class Usuario implements IFlyWeight{
 
     private String nombre;
     private String correo;
-    private String contrasena;
+    private String password;
     private String documento;
     //private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
@@ -20,7 +20,7 @@ public abstract class Usuario implements IFlyWeight{
     public Usuario(String nombre, String correo, String contrasena, String documento) {
         this.nombre = nombre;
         this.correo = correo;
-        this.contrasena= contrasena;
+        this.password= contrasena;
         this.documento = documento;
     }
 
@@ -29,14 +29,14 @@ public abstract class Usuario implements IFlyWeight{
     public void adicionar(String nombre, String correo, String contrasena, String documento) {
     	this.nombre = nombre;
         this.correo = correo;
-        this.contrasena= contrasena;
+        this.password= contrasena;
         this.documento = documento;
     };
     
     public void modificar(String nombre, String correo, String contrasena, String documento) {
     	this.nombre = nombre;
         this.correo = correo;
-        this.contrasena= contrasena;
+        this.password= contrasena;
         this.documento = documento;
     };
     
@@ -52,11 +52,11 @@ public abstract class Usuario implements IFlyWeight{
     }
 
     public String getContrasena() {
-        return contrasena;
+        return password;
     }
 
     public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+        this.password = contrasena;
     }
 
     public String getCorreo() {
@@ -74,20 +74,6 @@ public abstract class Usuario implements IFlyWeight{
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
-
-	@Override
-	public String toString() {
-		return "Usuario [nombre=" + nombre + ", correo=" + correo + ", contrasena=" + contrasena + ", documento="
-				+ documento + "]";
-	}
-
-/*	public static ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public static void setUsuarios(ArrayList<Usuario> usuarios) {
-        Usuario.usuarios = usuarios;
-    }*/
    
   
 }

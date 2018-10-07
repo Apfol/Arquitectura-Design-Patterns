@@ -69,9 +69,5 @@ public class Ruta implements Componente{
     public void add(Componente c) {
         getComponentes().add(c);
     }
-    
-    @Override
-    public String toString() {
-    	return "Se muestra ruta: " + nombre + ".";
-    }
+ 
 }

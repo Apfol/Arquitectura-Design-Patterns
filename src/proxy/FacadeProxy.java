@@ -12,7 +12,7 @@ public class FacadeProxy implements IFacade {
 	
 	private FacadeProxy() {}
 	
-	public static FacadeProxy getFacadeProxyInstance() {
+	public static FacadeProxy getInstance() {
 		if(mFacadeProxy == null) {
 			mFacadeProxy = new FacadeProxy();
 		}

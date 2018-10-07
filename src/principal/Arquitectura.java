@@ -42,7 +42,7 @@ public class Arquitectura {
 		facade.rutasDummy();
 		facade.reservasDummy();
 
-		FacadeProxy facadeProxy = FacadeProxy.getFacadeProxyInstance();
+		FacadeProxy facadeProxy = FacadeProxy.getInstance();
 
 		Long aleatorio = null;
 
