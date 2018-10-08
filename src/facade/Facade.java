@@ -36,6 +36,7 @@ public class Facade implements IFacade {
 	public static Facade getInstance() {
 		if (mFacade == null) {
 			mFacade = new Facade();
+			mFacade.fabricaUsers.cargarUsuarios(mFacade.getUsuarios());
 		}
 		return mFacade;
 	}
@@ -315,6 +316,7 @@ public class Facade implements IFacade {
 	public Long realizarOperaciones(String correo, String password) {
 		Long aleatorio = Long.parseLong(String.valueOf(Math.random() * 2E13 + 1));
 		aleatorios.put(aleatorio, correo);
+		
 		return aleatorio;
 	}
 

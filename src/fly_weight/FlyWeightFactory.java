@@ -31,12 +31,6 @@ public class FlyWeightFactory {
 		
 		return us;
 	}
-	
-	public void cargarUsuarios() {
-		
-
-	}
-	
 
 	public void añadirUsuario(IFlyWeight usEspe)
 	{
@@ -51,6 +45,15 @@ public class FlyWeightFactory {
 		
 	}
 	
+	public void cargarUsuarios(ArrayList<Usuario> usuarios) {
+		this.usBasicInf.clear();
+		for(IFlyWeight ius: usuarios) {
+			this.añadirUsuario(ius);
+		}
+	}
+	
+
+	
 	public String mostrarUsuarios()
 	{
 		String cadena = "";
@@ -58,7 +61,7 @@ public class FlyWeightFactory {
 		while(iterator.hasNext())
 		{
 			Map.Entry pair = (Map.Entry)iterator.next();
-			cadena += pair.getKey().toString() +" = "+ ((IFlyWeight)pair.getValue()).getNombre() +"\n";
+			cadena += pair.getKey().toString() +" = "+ ((IFlyWeight)pair.getValue()).getCorreo() +"\n";
 		}
 		return	cadena;
 	}
