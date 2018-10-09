@@ -99,7 +99,7 @@ public class Arquitectura {
 				if (aleatorio != null && aleatorio != 0) {
 					JOptionPane.showMessageDialog(null, "Inició de sesión éxitoso");
 					usuario = facade.obtenerUsuario(aleatorio);
-					if (usuario instanceof Pasajero && facade.isSession(aleatorio)) {
+					if (usuario instanceof Pasajero && facade.isSession(aleatorio, correo)) {
 						// Pasajero
 						do {
 							opcion = Integer.parseInt(JOptionPane.showInputDialog("" + "1. Crear registro de reserva \n"
@@ -198,7 +198,7 @@ public class Arquitectura {
 								break;
 							}
 						} while (opcion != 0);
-					} else if (usuario instanceof Conductor && facade.isSession(aleatorio)) {
+					} else if (usuario instanceof Conductor && facade.isSession(aleatorio, correo)) {
 						// Conductor
 						do {
 							opcion = Integer
@@ -282,13 +282,13 @@ public class Arquitectura {
 								break;
 							}
 						} while (opcion != 0);
-					} else if (usuario instanceof AdministradorAdapter && facade.isSession(aleatorio)) {
+					} else if (usuario instanceof AdministradorAdapter && facade.isSession(aleatorio, correo)) {
 						opcion = Integer.parseInt(JOptionPane.showInputDialog(
 								"" + "Seleccione la opción: \n" + "1. Modificar usuario \n" + "2. Eliminar usuario \n"
 										+ "3. Mostrar usuarios \n" + "4. Reservas \n" + "5. Pagos\n" + "0. Salir"));
 						switch (opcion) {
 						case 1:
-							if (facade.isSession(aleatorio)) {
+							if (facade.isSession(aleatorio, correo)) {
 								int opcion2 = Integer.parseInt(JOptionPane.showInputDialog("" + "1. Pasajero \n"
 										+ "2. Conductor \n" + "3. Administrador \n" + "4. Regresar"));
 								switch (opcion2) {
@@ -325,7 +325,7 @@ public class Arquitectura {
 							}
 							break;
 						case 2:
-							if (facade.isSession(aleatorio)) {
+							if (facade.isSession(aleatorio, correo)) {
 								System.out.println(facade.obtenerUsuarios());
 								documento = JOptionPane.showInputDialog(null,
 										"Introduce el documento del usuario a eliminar");
@@ -335,7 +335,7 @@ public class Arquitectura {
 							}
 							break;
 						case 3:
-							if (facade.isSession(aleatorio)) {
+							if (facade.isSession(aleatorio, correo)) {
 								// System.out.println(fabricaUs.mostrarUsuarios());
 								// JOptionPane.showMessageDialog(null, fabricaUs.mostrarUsuarios());
 							} else {
