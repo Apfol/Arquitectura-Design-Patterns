@@ -88,10 +88,12 @@ public class Arquitectura {
 
 				break;
 			case 2:
+				
 				correo = JOptionPane.showInputDialog("Introducir correo");
 				password = JOptionPane.showInputDialog("Introducir password");
 
 				aleatorio = facadeProxy.realizarOperaciones(correo, password);
+				
 				Usuario usuario = null;
 
 				if (aleatorio != null && aleatorio != 0) {
@@ -196,10 +198,7 @@ public class Arquitectura {
 								break;
 							}
 						} while (opcion != 0);
-					} else {
-						JOptionPane.showMessageDialog(null, "Aún no has iniciado sesión");
-					}
-					if (usuario instanceof Conductor && facade.isSession(aleatorio)) {
+					} else if (usuario instanceof Conductor && facade.isSession(aleatorio)) {
 						// Conductor
 						do {
 							opcion = Integer
@@ -283,10 +282,7 @@ public class Arquitectura {
 								break;
 							}
 						} while (opcion != 0);
-					} else {
-						JOptionPane.showMessageDialog(null, "Aún no has iniciado sesión");
-					}
-					if (usuario instanceof AdministradorAdapter && facade.isSession(aleatorio)) {
+					} else if (usuario instanceof AdministradorAdapter && facade.isSession(aleatorio)) {
 						opcion = Integer.parseInt(JOptionPane.showInputDialog(
 								"" + "Seleccione la opción: \n" + "1. Modificar usuario \n" + "2. Eliminar usuario \n"
 										+ "3. Mostrar usuarios \n" + "4. Reservas \n" + "5. Pagos\n" + "0. Salir"));
