@@ -26,9 +26,7 @@ public class Facade implements IFacade {
 	private  FlyWeightFactory fabricaUsers = new FlyWeightFactory();;
 	
 	
-	public static ArrayList<Usuario> getUsuarios() {
-		return usuarios;
-	}
+	
 
 	private Facade() {
 	}
@@ -58,7 +56,7 @@ public class Facade implements IFacade {
 		}
 		return tipoPasajero;
 	}
-
+	//
 	private int obtenerTipo(Usuario us) {
 		int tipoUsu = 0;
 		if (us instanceof Pasajero) {
@@ -283,6 +281,9 @@ public class Facade implements IFacade {
 		return aleatorios.contains(keyLogin) && keyLogin != 0 ? true : false;
 	}
 
+	public static ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
 	public void usuariosDummy() {
 		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", "1073525507"));
 		FacadeProxy.getUsuarios().add(new UsuarioLogin("jairolo@unisabana.edu.co", "jario123"));
