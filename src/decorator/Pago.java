@@ -2,7 +2,7 @@ package decorator;
 
 public class Pago implements Component{
 	
-	private String valor;
+	private double valor;
 	private String documentoConductor;
 	private String documentoPasajero;
 	
@@ -10,7 +10,7 @@ public class Pago implements Component{
 	
 	public void establecerParametros(String parametros) {
 		String[] parametrosBanco = parametros.split(",");
-		setValor(parametrosBanco[0]);
+		setValor(Double.parseDouble(parametrosBanco[0]));
 		setDocumentoConductor(parametrosBanco[1]);
 		setDocumentoPasajero(parametrosBanco[2]);
 	}
@@ -21,11 +21,11 @@ public class Pago implements Component{
 		+ ". Documento pasajero: " + getDocumentoPasajero();
 	}
 
-	public String getValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 
