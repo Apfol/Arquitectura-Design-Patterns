@@ -6,8 +6,8 @@ public class PagosPSEBanco extends PagosPSE{
 	private String numeroCuenta;
 	private String passCuenta;
 
-	public PagosPSEBanco(Component pagoEspecial) {
-		super(pagoEspecial);
+	public PagosPSEBanco(Component pago) {
+		super(pago);
 	}
 
 	

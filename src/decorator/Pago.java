@@ -2,9 +2,9 @@ package decorator;
 
 public class Pago implements Component{
 	
-	public String valor;
-	public String documentoConductor;
-	public String documentoPasajero;
+	private String valor;
+	private String documentoConductor;
+	private String documentoPasajero;
 	
 
 	

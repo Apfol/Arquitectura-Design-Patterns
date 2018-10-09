@@ -16,6 +16,7 @@ public class Pasajero extends Usuario {
     }
 
     public Pasajero() {
+    
     }
 
     @Override

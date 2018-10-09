@@ -20,7 +20,7 @@ public class Facade implements IFacade {
 	private static ArrayList<Ruta> rutas = new ArrayList<Ruta>();
 	private static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private static ArrayList<Component> pagos = new ArrayList<Component>();
-	public static Hashtable<Long, String> aleatorios = new Hashtable<Long, String>();
+	private static Hashtable<Long, String> aleatorios = new Hashtable<Long, String>();
 	private static Facade mFacade;
 	
 	private  FlyWeightFactory fabricaUsers = new FlyWeightFactory();;
@@ -271,6 +271,17 @@ public class Facade implements IFacade {
 		}
 		return valoresPagos;
 	}
+	@Override
+	public Long realizarOperaciones(String correo, String password) {
+		Long aleatorio =  (long) (Math.random() * 2E13+1);
+		aleatorios.put(aleatorio, correo);
+		
+		return aleatorio;
+	}
+
+	public boolean isSession(Long keyLogin) {
+		return aleatorios.contains(keyLogin) && keyLogin != 0 ? true : false;
+	}
 
 	public void usuariosDummy() {
 		usuarios.add(new Conductor("Jario lopez", "jairolo@unisabana.edu.co", "jario123", "1073525507"));
@@ -312,16 +323,6 @@ public class Facade implements IFacade {
 		reservas.add(new Reserva("Reserva 5243446", 3, "Ruta 3", "216654382"));
 	}
 
-	@Override
-	public Long realizarOperaciones(String correo, String password) {
-		Long aleatorio = Long.parseLong(String.valueOf(Math.random() * 2E13 + 1));
-		aleatorios.put(aleatorio, correo);
-		
-		return aleatorio;
-	}
-
-	public boolean isSession(Long keyLogin) {
-		return aleatorios.contains(keyLogin) && keyLogin != 0 ? true : false;
-	}
+	
 
 }
