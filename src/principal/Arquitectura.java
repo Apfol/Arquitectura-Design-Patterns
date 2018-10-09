@@ -104,6 +104,7 @@ public class Arquitectura {
 					usuario = facade.obtenerUsuario(aleatorio);
 				} else if (aleatorio == 0) {
 					JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+					break;
 				}
 		
 				opcion = Integer.parseInt(JOptionPane.showInputDialog(
