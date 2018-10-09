@@ -5,6 +5,10 @@
  */
 package adapter;
 
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -25,12 +29,24 @@ public class AdministradorAdapter extends Usuario {
 
     @Override
     public void consultar() {
-       
+    	String datosUsuarios = "";
+        ArrayList<Usuario> usuarios = this.getUsuarios();
+        for (Usuario us: usuarios) {
+            if(us instanceof AdministradorAdapter) {
+                datosUsuarios += us.getNombre() + " " + us.getCorreo() + "\n";
+            }
+        }
+        JOptionPane.showMessageDialog(null, datosUsuarios);
     }
 
     @Override
-    public void eliminar() {
-        
+    public void eliminar(String correo) {
+    	ArrayList<Usuario> usuarios = this.getUsuarios();
+        for (Usuario us: usuarios) {
+            if(us.getCorreo().equals(correo)) {
+                usuarios.remove(us);
+            }
+        }
     }
 
 }

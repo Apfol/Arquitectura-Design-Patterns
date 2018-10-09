@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package adapter;
+import java.util.ArrayList;
+
 import fly_weight.IFlyWeight;
 
 public abstract class Usuario implements IFlyWeight{
@@ -12,7 +14,7 @@ public abstract class Usuario implements IFlyWeight{
     private String correo;
     private String password;
     private String documento;
-    //private static ArrayList<Usuario> usuarios = new ArrayList<>();
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
     public Usuario() {
     }
@@ -25,23 +27,27 @@ public abstract class Usuario implements IFlyWeight{
     }
 
     
-    
-    public void adicionar(String nombre, String correo, String contrasena, String documento) {
-    	this.nombre = nombre;
-        this.correo = correo;
-        this.password= contrasena;
-        this.documento = documento;
+    public void adicionar(Usuario usuario) {
+        usuarios.add(usuario);
     };
     
-    public void modificar(String nombre, String correo, String contrasena, String documento) {
-    	this.nombre = nombre;
-        this.correo = correo;
-        this.password= contrasena;
-        this.documento = documento;
+    public void modificar(Usuario usuario, String correo) {
+        for (Usuario us: usuarios) {
+            if(us.correo.equals(correo)) {
+                usuarios.remove(us);
+            }
+            usuarios.add(usuario);
+        }
+    };
+    
+    public void mostrarUsuarios() {
+        usuarios.forEach((us) -> {
+            System.out.println(us);
+        });
     };
     
     abstract public void consultar();
-    abstract public void eliminar();
+    abstract public void eliminar(String correo);
 
     public String getNombre() {
         return nombre;
@@ -73,6 +79,14 @@ public abstract class Usuario implements IFlyWeight{
 
 	public void setDocumento(String documento) {
 		this.documento = documento;
+	}
+
+	public static ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public static void setUsuarios(ArrayList<Usuario> usuarios) {
+		Usuario.usuarios = usuarios;
 	}
    
   
