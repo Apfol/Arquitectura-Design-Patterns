@@ -7,10 +7,7 @@ package composite;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Apfol
- */
+
 public class Ruta implements Componente{
     
     private String nombre;
