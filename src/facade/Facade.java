@@ -277,8 +277,8 @@ public class Facade implements IFacade {
 		return aleatorio;
 	}
 
-	public boolean isSession(Long keyLogin) {
-		if(aleatorios.containsKey(keyLogin)) {
+	public boolean isSession(Long keyLogin, String correo) {
+		if(aleatorios.containsKey(keyLogin) && correo.equals(aleatorios.get(keyLogin))) {
 			return true;
 		} else {
 			return false;
