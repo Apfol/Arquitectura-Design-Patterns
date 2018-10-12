@@ -81,6 +81,7 @@ public class FacadeProxyTest {
 		facadeProxy.adicionar(key, ejemplo1);
 		
 		assertTrue(facadeProxy.buscar(key) != null);
+		//assertTrue(facadeProxy.buscar("213") != null);
 		
 	}
 	
